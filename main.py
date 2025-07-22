@@ -164,7 +164,7 @@ def main():
     dtype = DataType.W16A16 if args.word == 2 else DataType.W8A8
     modelinfos = make_model_config(args.model, dtype)
     xpu_config = make_xpu_config(gpu_device, num_gpu=num_gpu, mem_cap=gmem_cap)
-    system = System(xpu_config['GPU'], modelinfos)
+    system = System(xpu_config['GPU'], modelinfos) #这里的初始化，不能直接填加速器的类型，否则会报错
     if args.system in ['dgx-attacc']:
         if args.pim == "bg":
             pim_type = PIMType.BG

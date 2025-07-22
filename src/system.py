@@ -20,7 +20,7 @@ class System:
         self.GPU = xPU(DeviceType.GPU, gpu_config, scaling_factor)
         self.AttDevice = self.GPU
         if self.hetero_name == DeviceType.PIM:
-            self.AttDevice = PIM(hetero_config, scaling_factor)
+            self.AttDevice = PIM(hetero_config, scaling_factor, hetero_config) #这里的初始化代码有问题
 
         elif self.hetero_name == DeviceType.CPU:
             self.AttDevice = xPU(DeviceType.CPU, hetero_config, scaling_factor)
