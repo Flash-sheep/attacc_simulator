@@ -2,6 +2,7 @@ from src.type import *
 from src.model import *
 import math
 from src.ramulator_wrapper import *
+from src.neurosim_wrapper import NeuroSim
 
 
 class xPU:
@@ -346,6 +347,97 @@ class PIM:
                 energies = [i * self.num_attacc for i in energies]
 
                 return time, energies
+            else:
+                return 0, [0, 0, 0, 0, 0, 0]
+
+        elif layer.type == LayerType.SOFTMAX:
+            # Execution time
+            compute_time = self._compute_time(layer)
+            mem_time = self._mem_time(layer)
+
+            if compute_time > mem_time:
+                layer.bound = 'compute'
+            else:
+                layer.bound = 'memory'
+            exec_time = max(compute_time, mem_time)
+            layer.time = exec_time
+
+            energy = self._get_energy(layer)
+
+            return exec_time, energy
+
+        else:
+            assert 0, "PIM does not support this layer."
+            
+class DIGPIM:
+
+    def __init__(self, config, scaling_factor, neurosim: NeuroSim):
+        self.name = DeviceType.PIM
+        self.num_neurosim = config['NUM_NEUROSIM']
+        self.num_chip = config['NUM_CHIP']
+        self.pim_type = config['PIM_TYPE']
+        self.peak_memory_bandwidth = config['MEM_BW_PER_CHIP'] * self.num_chip
+        self.softmax_peak_flops = config['SOFTMAX_FLOPS']
+        self.softmax_peak_bandwidth = config['SOFTMAX_MEM_BW']
+        self.max_interface_bandwidth = config['INTERFACE_BW']
+        self.aggregate_memory_capacity = config[
+            'MEM_CAPACITY_PER_CHIP'] * self.num_neurosim * self.num_chip
+        self.energy_table = config['ENERGY_TABLE']
+        self.io_energy_table = self.energy_table['io']
+        self.power_constraint = config['POWER_CONSTRAINT']
+        self.neurosim = neurosim
+
+    def _get_traffic(self, layer: Layer):
+        # return tuple of 4 elements (off-mem, L2, L1, reg)
+        m, n, k, numOp, dbyte = layer.get_infos()
+        if layer.type in [LayerType.MATMUL, LayerType.FC, LayerType.SOFTMAX]:
+            data = layer.get_size()
+            return data, [0], [0], [0]
+
+        else:
+            assert 0, "In get_traffic function, PIM could not support this layer"
+
+    def _io_time_energy(self, layer: Layer):
+        m, n, k, numOp, dbyte = layer.get_infos()
+        interface_bw = self.max_interface_bandwidth / 2
+        traffic = m * n * numOp * dbyte
+        exec_time = traffic / interface_bw
+
+        energy = traffic * self.energy_table['comm'] * self.num_neurosim
+
+        return exec_time, [0, 0, 0, 0, 0, energy]
+
+    def _compute_time(self, layer: Layer):
+        flops = self.softmax_peak_flops
+        flops *= int(2 / layer.dbyte)
+        compute_time = layer.get_flops() / flops
+        return compute_time
+
+    def _mem_time(self, layer: Layer):
+        mem_bw = self.softmax_peak_bandwidth
+        mem_time = sum(layer.get_size()) / mem_bw
+        return mem_time
+
+    def _get_energy(self, layer: Layer):
+        off_data = layer.get_size()
+        e_off = sum(off_data) * self.energy_table['sram'] * self.num_neurosim
+        e_flop = layer.get_flops(
+        ) / 2 * self.energy_table['alu'] * self.num_neurosim
+
+        return [e_off, 0, 0, 0, e_flop, 0]
+
+    def get_time_and_energy(self, layer: Layer):
+        if layer.type == LayerType.X2G:
+            return self._io_time_energy(layer)
+
+        elif layer.type == LayerType.MATMUL:
+            ## operational granularity = the attention layer
+            if 'score' in layer.name:
+                m, n, k, numOp, dbyte = layer.get_infos()
+                time, energy = self.neurosim.output(
+                    self.pim_type, layer, self.power_constraint)
+                
+                return time, [energy, 0, 0, 0, 0, 0] #为保证接口对齐，将其他energy全部设为0
             else:
                 return 0, [0, 0, 0, 0, 0, 0]
 

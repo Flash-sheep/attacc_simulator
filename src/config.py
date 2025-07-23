@@ -171,6 +171,9 @@ def make_pim_config(pim_type: PIMType,
                     num_hbm=5,
                     bw_scale=None,
                     power_constraint=False):
+    
+    if(pim_type==PIMType.DIG):
+        return make_digpim_config(pim_type, interface_type, opb, num_attacc, num_hbm, bw_scale, power_constraint)
     config = {}
     config["PIM_TYPE"] = pim_type
     config["POWER_CONSTRAINT"] = power_constraint
@@ -200,6 +203,41 @@ def make_pim_config(pim_type: PIMType,
 
     return config
 
+def make_digpim_config(pim_type: PIMType,
+                    interface_type: InterfaceType,
+                    opb=1,
+                    num_neurosim=8,
+                    num_chip=5,
+                    bw_scale=None,
+                    power_constraint=False):
+    config = {}
+    config["PIM_TYPE"] = pim_type
+    config["POWER_CONSTRAINT"] = power_constraint
+    config["ENERGY_TABLE"] = ENERGY_TABLE['PIM'][pim_type]
+
+    internal_bandwidth_scale =  BW_SCALE[power_constraint][pim_type] \
+                                if bw_scale is None else bw_scale
+    config["NUM_NEUROSIM"] = num_neurosim
+    config["NUM_CHIP"] = num_chip
+    config["MEM_CAPACITY_PER_CHIP"] = 32 * 1024 * 1024 * 1024
+    config[
+        "MEM_BW_PER_CHIP"] = 670.4 * 1000 * 1000 * 1000 * internal_bandwidth_scale
+    config["FLOPS_PER_CHIP"] = config["MEM_BW_PER_CHIP"] * opb
+    config["SOFTMAX_MEM_BW"] = 670.4 * 1000 * 1000 * 1000 * num_chip
+    config["SOFTMAX_FLOPS"] = config["SOFTMAX_MEM_BW"]
+
+    if interface_type == InterfaceType.NVLINK3:
+        config["INTERFACE_BW"] = 600 * 1000 * 1000 * 1000
+    elif interface_type == InterfaceType.NVLINK4:
+        config["INTERFACE_BW"] = 900 * 1000 * 1000 * 1000
+    elif interface_type == InterfaceType.PCIE4:
+        config["INTERFACE_BW"] = 64 * 1000 * 1000 * 1000
+    elif interface_type == InterfaceType.PCIE5:
+        config["INTERFACE_BW"] = 128 * 1000 * 1000 * 1000
+    else:
+        assert 0, "Invalid interface type"
+
+    return config
 
 def make_model_config(name, dtype):
     model_table = {}

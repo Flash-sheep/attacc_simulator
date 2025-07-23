@@ -45,7 +45,7 @@ def run(system: System,
         lin,
         lout,
         power_constraint=False,
-        pipe=0,
+        pipe=False,
         parallel=False,
         output_file=None):
     print("---Run simple mode Batch {} Lin {} Lout {} pipe {} parall {}---".
@@ -75,7 +75,9 @@ def main():
         default="dgx",
         help="dgx (each GPU has 80GB HBM), \
               dgx-cpu (In dgx, offloading the attention layer to cpu), \
-              dgx-attacc (dgx + attacc)")
+              dgx-attacc (dgx + attacc), \
+              dgx-neurosim (dgx + neurosim)"
+              )
     parser.add_argument(
         "--gpu",
         type=str,
@@ -96,7 +98,18 @@ def main():
     parser.add_argument("--pim",
                         type=str,
                         default='bank',
-                        help="pim mode. list: bank, bg, buffer")
+                        help="pim mode. list: bank, bg, buffer, digital")
+    
+    parser.add_argument("--numattacc",
+                        type=int,
+                        default=2,
+                        help="pim number")
+    
+    parser.add_argument("--numhbm",
+                        type=int,
+                        default=5,
+                        help="number of HBM banks, or chips for neuroSim")
+    
     parser.add_argument("--powerlimit",
                         action='store_true',
                         help="power constraint for PIM ")
@@ -146,7 +159,7 @@ def main():
     else:
         assert 0
 
-    if args.system == 'dgx-attacc':
+    if args.system == 'dgx-attacc'|args.system == 'dgx-neurosim':
         print("{}: ({} x {}), PIM:{}, [Lin, Lout, batch]: {}".format(
             args.system, args.gpu, args.ngpu, args.pim,
             [args.lin, args.lout, args.batch]))
@@ -157,24 +170,27 @@ def main():
     num_gpu = args.ngpu
     gmem_cap = args.gmemcap * 1024 * 1024 * 1024
     output_path = "output.csv"
-    if os.path.exists(output_path):
-        os.system("rm " + output_path)
+    # if os.path.exists(output_path):
+    #     os.system("rm " + output_path)
 
     # set system
     dtype = DataType.W16A16 if args.word == 2 else DataType.W8A8
     modelinfos = make_model_config(args.model, dtype)
     xpu_config = make_xpu_config(gpu_device, num_gpu=num_gpu, mem_cap=gmem_cap)
     system = System(xpu_config['GPU'], modelinfos) #这里的初始化，不能直接填加速器的类型，否则会报错
-    if args.system in ['dgx-attacc']:
+    if args.system in ['dgx-attacc', 'dgx-neurosim']:
         if args.pim == "bg":
             pim_type = PIMType.BG
         elif args.pim == "buffer":
             pim_type = PIMType.BUFFER
+        elif args.pim == "digital":
+            pim_type = PIMType.DIG
         else:
             pim_type = PIMType.BA
         pim_config = make_pim_config(pim_type,
                                      InterfaceType.NVLINK3,
-                                     power_constraint=args.powerlimit)
+                                     power_constraint=args.powerlimit, num_attacc=args.numattacc,
+                                     num_hbm=args.numhbm)
         system.set_accelerator(modelinfos, DeviceType.PIM, pim_config)
 
     elif args.system in ['dgx-cpu']:

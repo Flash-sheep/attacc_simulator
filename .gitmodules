@@ -1,3 +1,4 @@
-[submodule "ramulator2"]
-	path = ramulator2
-	url = ./../../CMU-SAFARI/ramulator2.git
+[submodule "NeuroSim"]
+	path = NeuroSim
+	url = https://github.com/Flash-sheep/NeuroSim.git
+	branch = 3DInferenceV1.0

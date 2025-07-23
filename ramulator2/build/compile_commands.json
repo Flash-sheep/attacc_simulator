@@ -1,0 +1,342 @@
+[
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIE -std=c++20 -o CMakeFiles/ramulator-exe.dir/src/main.cpp.o -c /home/long/attacc_simulator/ramulator2/src/main.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/main.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/binary.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/binary.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/binary.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/convert.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/convert.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/convert.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/depthguard.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/depthguard.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/directives.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/directives.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/directives.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/emit.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emit.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emit.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitfromevents.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitfromevents.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitter.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitter.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitterstate.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitterstate.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitterutils.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/emitterutils.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/exceptions.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/exceptions.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/exp.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/exp.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/exp.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/memory.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/memory.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/memory.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/node.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/node.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/node.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/node_data.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/node_data.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/nodebuilder.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/nodebuilder.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/nodeevents.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/nodeevents.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/null.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/null.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/null.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/ostream_wrapper.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/ostream_wrapper.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/parse.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/parse.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/parse.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/parser.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/parser.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/parser.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/regex_yaml.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/regex_yaml.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scanner.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scanner.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scanscalar.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scanscalar.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scantag.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scantag.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scantoken.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/scantoken.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/simplekey.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/simplekey.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/singledocparser.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/singledocparser.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/stream.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/stream.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/stream.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_NO_CONTRIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src -O3 -DNDEBUG -fPIC -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=c++20 -o CMakeFiles/yaml-cpp.dir/src/tag.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/tag.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/src/tag.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/spdlog.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/spdlog.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/stdout_sinks.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/stdout_sinks.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/color_sinks.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/color_sinks.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/file_sinks.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/file_sinks.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/async.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/async.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/cfg.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/cfg.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/cfg.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/_deps/spdlog-build",
+  "command": "/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o -c /home/long/attacc_simulator/ramulator2/ext/spdlog/src/bundled_fmtlib_format.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/ext/spdlog/src/bundled_fmtlib_format.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/factory.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/factory.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/factory.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/logging.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/logging.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/logging.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/utils.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/utils.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/utils.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/config.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/config.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/config.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/stats.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/stats.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/stats.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/base",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-base.dir/request.cpp.o -c /home/long/attacc_simulator/ramulator2/src/base/request.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/base/request.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/frontend",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/loadstore_trace.cpp.o -c /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/loadstore_trace.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/loadstore_trace.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/frontend",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.o -c /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/pim_loadstore_trace.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/pim_loadstore_trace.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/translation",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-translation.dir/impl/no_translation.cpp.o -c /home/long/attacc_simulator/ramulator2/src/translation/impl/no_translation.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/translation/impl/no_translation.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/translation",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-translation.dir/impl/random_translation.cpp.o -c /home/long/attacc_simulator/ramulator2/src/translation/impl/random_translation.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/translation/impl/random_translation.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/memory_system",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-memorysystem.dir/impl/dummy_memory_system.cpp.o -c /home/long/attacc_simulator/ramulator2/src/memory_system/impl/dummy_memory_system.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/dummy_memory_system.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/memory_system",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-memorysystem.dir/impl/generic_DRAM_system.cpp.o -c /home/long/attacc_simulator/ramulator2/src/memory_system/impl/generic_DRAM_system.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/generic_DRAM_system.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/memory_system",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.o -c /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_DRAM_system.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_DRAM_system.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/linear_mappers.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/linear_mappers.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_linear_mappers.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_linear_mappers.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_pim_linear_mappers.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_pim_linear_mappers.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-dram.dir/impl/HBM3.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/dummy_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/dummy_controller.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/dummy_controller.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/generic_dram_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/generic_dram_controller.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/generic_dram_controller.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/hbm3_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/hbm3_controller.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/hbm3_controller.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/hbm3_pim_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/hbm3_pim_controller.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/hbm3_pim_controller.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/generic_scheduler.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/generic_scheduler.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh_hbm3.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh_hbm3.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/no_refresh.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/no_refresh.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/trace_recorder.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/trace_recorder.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp"
+}
+]

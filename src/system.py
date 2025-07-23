@@ -2,6 +2,7 @@ from .type import *
 from .model import *
 from .devices import *
 from .config import *
+
 RAMPATH = "./ramulator2"
 RAMLOG = "./ramulator.out"
 
@@ -50,6 +51,11 @@ class System:
         elif self.hetero_name == DeviceType.CPU:
             self.devices['Acc'] = xPU(DeviceType.CPU, config,
                                       self.scaling_factor)
+            
+        elif self.hetero_name == DeviceType.DIGPIM:
+            neurosim = NeuroSim(modelinfos, "neurosim", "neurosim.out")
+            self.devices['Acc'] = DIGPIM(config,
+                                      self.scaling_factor,neurosim)
 
     # Set all device to GPU
     def set_xpu(self, config):
@@ -153,7 +159,7 @@ class System:
                         x2g_time -= attn_time * (1 - minimum_ratio)
                         qkv_time *= minimum_ratio
                         prj_time *= minimum_ratio
-            softmax_time = 0
+            # softmax_time = 0 #TODO这里莫名其妙多了个softmax=0
 
             for layer in layers:
                 if layer.name in ["qkv"]:
@@ -385,8 +391,8 @@ class System:
 
             ## Scaling to all decoder
             ## Perf: ms, energy: nJ
-            perf = [t * self.model.ndec * 1000 for t in perf]
-            energies = [t * self.model.ndec / 1000 for t in energies]
+            perf = [t * self.model.ndec * 1000 for t in perf] #t的初始单位是s
+            energies = [t * self.model.ndec / 1000 for t in energies] #e的初始单位是pJ
 
             if itr == 0:
                 if len(perf_all) > 0:

@@ -23,12 +23,14 @@ class DeviceType(Enum):
     GPU = 1
     CPU = 2
     PIM = 3
+    DIGPIM = 4  # 添加了digital pim
 
 
 class PIMType(Enum):
     BA = 0
     BG = 1
     BUFFER = 2
+    DIG = 3 #添加了digital pim
 
 
 class InterfaceType(Enum):
