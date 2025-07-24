@@ -12,7 +12,8 @@ ENERGY_TABLE = {
     'PIM': {
         PIMType.BA: {},
         PIMType.BG: {},
-        PIMType.BUFFER: {}
+        PIMType.BUFFER: {},
+        PIMType.DIG: {}
     }
 }
 ENERGY_TABLE['GPU']['reg'] = 0.0675
@@ -50,23 +51,30 @@ ENERGY_TABLE['PIM'][PIMType.BG]['mem'] = (0.11 + 0.44 +
                                           1.01) * 8  #, (1.23 + 0.5) * 8]
 ENERGY_TABLE['PIM'][PIMType.BUFFER]['mem'] = (0.11 + 0.44 + 1.01 + 1.23 +
                                               0.5) * 8  #, 0]
+ENERGY_TABLE['PIM'][PIMType.DIG]['mem'] = (0.11 +  
+                                          0.44) * 8  #, (1.01 + 1.23 + 0.5) * 8]#TODO 这里的energy table具体还不知道会用在哪里
+
 
 ENERGY_TABLE['PIM'][PIMType.BA]['sram'] = 0.0034
 ENERGY_TABLE['PIM'][PIMType.BG]['sram'] = 0.0034
 ENERGY_TABLE['PIM'][PIMType.BUFFER]['sram'] = 0.0034
+ENERGY_TABLE['PIM'][PIMType.DIG]['sram'] = 0.0034
 
 ENERGY_TABLE['PIM'][PIMType.BA]['alu'] = 0.32
 ENERGY_TABLE['PIM'][PIMType.BG]['alu'] = 0.32
 ENERGY_TABLE['PIM'][PIMType.BUFFER]['alu'] = 0.32
+ENERGY_TABLE['PIM'][PIMType.DIG]['alu'] = 0.32
 
 ENERGY_TABLE['PIM'][PIMType.BA]['io'] = [0.3, 0.5, 1.23, 1.01]
 ENERGY_TABLE['PIM'][PIMType.BG]['io'] = [0.3, 0.5, 1.23, 1.01]
 ENERGY_TABLE['PIM'][PIMType.BUFFER]['io'] = [0.3, 0.5, 1.23, 1.01]
+ENERGY_TABLE['PIM'][PIMType.DIG]['io'] = [0.3, 0.5, 1.23, 1.01]
 
 # https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10067395
 ENERGY_TABLE['PIM'][PIMType.BA]['comm'] = 10.4
 ENERGY_TABLE['PIM'][PIMType.BG]['comm'] = 10.4
 ENERGY_TABLE['PIM'][PIMType.BUFFER]['comm'] = 10.4
+ENERGY_TABLE['PIM'][PIMType.DIG]['comm'] = 10.4
 
 
 def make_xpu_config(gpu_type: GPUType,
@@ -154,12 +162,14 @@ BW_SCALE = {
     False: {
         PIMType.BA: 2 * 4 * 4 / 2,
         PIMType.BG: 2 * 4,
-        PIMType.BUFFER: 1
+        PIMType.BUFFER: 1,
+        PIMType.DIG:1 #TODO 这里不确定应该用哪个数据
     },
     True: {
         PIMType.BA: 9,
         PIMType.BG: 3,
-        PIMType.BUFFER: 1
+        PIMType.BUFFER: 1,
+        PIMType.DIG:1 #TODO 这里不确定应该用哪个数据
     }
 }
 
@@ -245,6 +255,7 @@ def make_model_config(name, dtype):
     model_table['GPT-89B'] = [48, 12288, 96, 128, 4, 1]
     model_table['GPT-13B'] = [40, 5120, 40, 128, 4, 1]
     model_table['LLAMA-7B'] = [32, 4096, 32, 128, 8 / 3, 1]
+    model_table['LLAMA-13B'] = [40, 4096, 40, 128, 8 / 3, 1]
     model_table['LLAMA-65B'] = [80, 8192, 64, 128, 8 / 3, 1]
     model_table['MT-76B'] = [60, 10240, 40, 128, 4, 1]
     model_table['MT-146B'] = [80, 12288, 80, 128, 4, 1]

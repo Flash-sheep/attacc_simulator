@@ -53,7 +53,7 @@ class System:
                                       self.scaling_factor)
             
         elif self.hetero_name == DeviceType.DIGPIM:
-            neurosim = NeuroSim(modelinfos, "neurosim", "neurosim.out")
+            neurosim = NeuroSim(modelinfos, "NeuroSim/Heterogeneous3D/NeuroSIM", "neurosim.out")
             self.devices['Acc'] = DIGPIM(config,
                                       self.scaling_factor,neurosim)
 

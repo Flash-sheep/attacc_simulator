@@ -24,6 +24,7 @@ class NeuroSim:
         self.num_chip = num_chip
         self.nhead = modelinfos['num_heads']
         self.dhead = modelinfos['dhead']
+        self.ndec = modelinfos['ndec']
         self.fast_mode = fast_mode
 
 
@@ -33,7 +34,7 @@ class NeuroSim:
                 df = pd.read_csv(self.output_log)
             else:
                 columns = [
-                    'L', 'nhead', 'dhead', 'dbyte', 'pim_type',
+                    'L', 'nhead', 'dhead','ndec' ,'dbyte', 'pim_type',
                     'power_constraint', 'time', 'energy'
                 ]
                 df = pd.DataFrame(columns=columns)
@@ -61,13 +62,13 @@ class NeuroSim:
         neurosim_exc = os.path.join(
             self.neurosim_dir,"main")
         
-        # trace_args = "--dhead {} --nhead {} --seqlen {} --dbyte {} --output {}".format(
+        # trace_args = "--dhead {} --nhead {} --seqlen {} --ndec --dbyte {} --output {}".format(
         #     self.dhead, num_ops_per_hbm, l, dbyte, output_file)
 
         debug = 0 #该参数用于控制neuroSim不输出无效信息
 
-        neuorsim_args = "{} {} {} {} {} {}".format(
-            self.dhead, num_ops_per_hbm, l, dbyte, output_file, debug)
+        neuorsim_args = "{} {} {} {} {} {} {}".format(
+            self.dhead, num_ops_per_hbm, l, self.ndec ,dbyte, output_file, debug)
 
         run_neurosim_cmd = f"{neurosim_exc} {neuorsim_args}"
         try:
@@ -110,8 +111,8 @@ class NeuroSim:
                 num_ops_group = math.ceil(num_ops_per_chip / minimum_heads)
                 num_ops_per_chip = minimum_heads
 
-            file_name = "neurosim_l{}_nattn{}_dhead{}_dbyte{}_pc{}".format(
-                l, num_ops_per_chip, dhead, layer.dbyte, int(power_constraint))
+            file_name = "neurosim_l{}_nattn{}_dhead{}_ndec{}_dbyte{}_pc{}".format(
+                l, num_ops_per_chip, dhead,self.ndec ,layer.dbyte, int(power_constraint))
             
             # yaml_file = os.path.join(self.neurosim_dir, file_name + '.yaml')
             # self.make_yaml_file(yaml_file, file_name, power_constraint)
@@ -122,7 +123,7 @@ class NeuroSim:
 
 
             log = [
-                l, num_ops_per_chip, dhead, dbyte, pim_type.name,
+                l, num_ops_per_chip, dhead, self.ndec , dbyte, pim_type.name,
                 power_constraint
             ] + result
             self.update_log_file(log)
@@ -151,7 +152,7 @@ class NeuroSim:
         dhead = layer.k
         dbyte = layer.dbyte
         row = self.df[(self.df['L'] == l) & (self.df['nhead'] == num_ops_per_chip) & \
-                      (self.df['dbyte'] == dbyte) & (self.df['dhead'] == dhead) & \
+                      (self.df['ndec']==self.ndec)& (self.df['dbyte'] == dbyte) & (self.df['dhead'] == dhead) & \
                       (self.df['power_constraint'] == power_constraint) &  \
                       (self.df['pim_type'] == pim_type.name)]
         if row.empty:

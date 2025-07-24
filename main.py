@@ -159,7 +159,7 @@ def main():
     else:
         assert 0
 
-    if args.system == 'dgx-attacc'|args.system == 'dgx-neurosim':
+    if (args.system == 'dgx-attacc') or (args.system == 'dgx-neurosim'):
         print("{}: ({} x {}), PIM:{}, [Lin, Lout, batch]: {}".format(
             args.system, args.gpu, args.ngpu, args.pim,
             [args.lin, args.lout, args.batch]))
@@ -191,7 +191,10 @@ def main():
                                      InterfaceType.NVLINK3,
                                      power_constraint=args.powerlimit, num_attacc=args.numattacc,
                                      num_hbm=args.numhbm)
-        system.set_accelerator(modelinfos, DeviceType.PIM, pim_config)
+        if(args.system == 'dgx-attacc'):
+            system.set_accelerator(modelinfos, DeviceType.PIM, pim_config)
+        else:
+            system.set_accelerator(modelinfos, DeviceType.DIGPIM, pim_config)
 
     elif args.system in ['dgx-cpu']:
         xpu_config = make_xpu_config(gpu_device)
