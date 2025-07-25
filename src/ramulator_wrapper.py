@@ -161,6 +161,7 @@ class Ramulator:
             dbyte = layer.dbyte
             num_ops_per_attacc = layer.numOp
             num_ops_per_hbm = math.ceil(num_ops_per_attacc / self.num_hbm)
+            
             num_ops_group = 1
             if self.fast_mode:
                 minimum_heads = 64
@@ -223,6 +224,7 @@ class Ramulator:
 
         num_ops_per_attacc = layer.numOp
         num_ops_per_hbm = math.ceil(num_ops_per_attacc / self.num_hbm)
+
         num_ops_group = 1
         if self.fast_mode:
             minimum_heads = 64

@@ -33,6 +33,8 @@ class System:
             self.model = Transformer(modelinfos,
                                      tensor_parallel=self.GPU.num_xpu)
             self.model_set = 1
+        
+        
 
         self.scaling_factor = scaling_factor
 
@@ -43,7 +45,7 @@ class System:
     def set_accelerator(self, modelinfos, name: DeviceType, config):
         self.hetero_name = name
         if self.hetero_name == DeviceType.PIM:
-            ramulator = Ramulator(modelinfos, "ramulator2", "ramulator.out")
+            ramulator = Ramulator(modelinfos, "ramulator2", "ramulator.out",num_hbm=config['NUM_HBM'])
             self.devices['Acc'] = PIM(config,
                                       self.scaling_factor,
                                       ramulator)
@@ -53,7 +55,7 @@ class System:
                                       self.scaling_factor)
             
         elif self.hetero_name == DeviceType.DIGPIM:
-            neurosim = NeuroSim(modelinfos, "NeuroSim/Heterogeneous3D/NeuroSIM", "neurosim.out")
+            neurosim = NeuroSim(modelinfos, "NeuroSim/Heterogeneous3D/NeuroSIM", "neurosim.out",num_chip=config['NUM_CHIP'])
             self.devices['Acc'] = DIGPIM(config,
                                       self.scaling_factor,neurosim)
 
@@ -195,6 +197,9 @@ class System:
         assert self.model_set, "Need to set_model"
         self.model.build(batch_size, lin, lout, self.hetero_name
                          in [DeviceType.CPU, DeviceType.PIM])
+        
+        
+        
         second_batch_size = num_reqs % batch_size
         num_batches = 1
         target_bs = [batch_size]
@@ -220,6 +225,14 @@ class System:
 
         perf_all = []
         energy_all = []
+        
+        g_decoder = self.model.gen_decoder
+        
+        # for gen_stage, decoder_block in enumerate(g_decoder):
+        #     for l_idx, layer in enumerate(decoder_block):
+        #         print(layer.name,layer.numOp)
+        
+        # exit(0)
         for itr, bs in enumerate(target_bs):
             time = 0
             wrt_io_busy = 0
@@ -436,6 +449,7 @@ class System:
             parallel_ff, power_constraint, 0, lin, lout, batch_size,
             cap_usage, s_flops, g_flops
         ]
+        
         if self.hetero_name == DeviceType.PIM:
             config[0] = self.devices['Acc'].pim_type.name
 

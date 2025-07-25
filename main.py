@@ -8,6 +8,8 @@ from src.ramulator_wrapper import *
 
 RAMULATOR = False
 
+pim_num = 1
+pim_core_num = 2
 
 def write_csv(logfile, perfs):
     if logfile is not None:
@@ -19,7 +21,7 @@ def write_csv(logfile, perfs):
         wrt = csv.writer(f)
         if firstrow:
             col_name = [
-                'model', 'dtype', 'xpu', 'cap', 'bw', 'sys_opb', 'hw', 'cores',
+                'model', 'dtype', 'xpu', 'cap', 'bw', 'sys_opb','pim_num','pim_core_num' ,'hw', 'cores',
                 'pipe_level', 'is parallel', 'power constraint', 'gqa_size',
                 'Lin', 'Lout', 'bs', 'required_cap', 's_flops',
                 'g_flops', 's_time', 's_matmul', 's_fc', 's_comm', 's_softmax',
@@ -35,7 +37,7 @@ def write_csv(logfile, perfs):
 
         for perf in perfs:
             tag, config, time, energy = perf
-            info = tag + config + time + energy
+            info = tag +[pim_num,(pim_core_num)]+ config + time + energy
             wrt.writerow(info)
         f.close()
 
@@ -200,6 +202,12 @@ def main():
         xpu_config = make_xpu_config(gpu_device)
         system.set_xpu(xpu_config['GPU'])
         system.set_accelerator(modelinfos, DeviceType.CPU, xpu_config['CPU'])
+    
+    pim_num = args.numattacc
+    pim_core_num = args.numhbm
+    # print(xpu_config)
+    # print(pim_config)
+    # exit(0)
 
     run(system,
         args.batch,

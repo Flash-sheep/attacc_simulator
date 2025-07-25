@@ -179,6 +179,7 @@ class Transformer:
                 Layer('gen', 'score', LayerType.MATMUL, False, self.dtype, 1,
                       lin + stage, self.dhead,
                       int(self.num_heads / self.tp) * batch))
+            # print(int(self.num_heads / self.tp)*batch)
             decoder.append(
                 Layer('gen', 'softmax', LayerType.SOFTMAX, False, self.dtype,
                       1, lin + stage, 1,
