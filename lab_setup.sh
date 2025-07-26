@@ -56,7 +56,7 @@ for system in "${!SYSTEMS[@]}"; do
                     echo "Running: $CMD"
                     
                     # Execute the command
-                    # eval $CMD
+                    eval $CMD
                     
                     # Add a separator between runs
                     echo "--------------------------------------------------"
