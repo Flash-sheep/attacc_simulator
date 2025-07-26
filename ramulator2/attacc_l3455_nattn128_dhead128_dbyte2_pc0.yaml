@@ -1,6 +1,6 @@
 Frontend:
   impl: PIMLoadStoreTrace
-  path: ramulator2/attacc_l2199_nattn64_dhead128_dbyte2_pc0.trace
+  path: ramulator2/attacc_l3455_nattn128_dhead128_dbyte2_pc0.trace
   clock_ratio: 1
 
   Translation:

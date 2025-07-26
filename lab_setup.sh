@@ -11,13 +11,13 @@ declare -A SYSTEMS=(
 )
 
 # Models to test
-MODELS=("LLAMA-7B" "LLAMA-13B" "LLAMA-70B")
+MODELS=("LLAMA-7B")
 
 # Input sequence lengths and corresponding output lengths
 LIN_LENS=("128 1024 1920" "256 2048 3840")
 
 # Batch sizes
-BATCHES=(1 4 8 16 32)
+BATCHES=(1 4 8 16)
 
 # Loop through each system configuration
 for system in "${!SYSTEMS[@]}"; do
