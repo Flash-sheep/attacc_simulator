@@ -7,11 +7,11 @@ BASE_CMD="python main.py --gpu A100a --ngpu 1 --ffopt --pipeopt --batch 1"
 declare -A SYSTEMS=(
     ["dgx"]="none 0"
     ["dgx-attacc"]="bank 2"
-    ["dgx-neurosim"]="digital 1"
+    # ["dgx-neurosim"]="digital 1"
 )
 
 # Models to test
-MODELS=("LLAMA-7B")
+MODELS=("LLAMA-65B")
 
 # Input sequence lengths and corresponding output lengths
 LIN_LENS=("128 1024 1920" "256 2048 3840")

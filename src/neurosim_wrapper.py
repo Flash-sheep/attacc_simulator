@@ -50,7 +50,7 @@ class NeuroSim:
         self.df.to_csv(self.output_log, index=False)
 
     #def run_ramulator(self):
-    def run_neurosim(self, pim_type: PIMType, l, num_ops_per_hbm, dbyte, file_name):
+    def run_neurosim(self, pim_type: PIMType, l_start, l_end, num_ops_per_hbm, dbyte, file_name):
         pim_type_name = pim_type.name.lower(
         ) if not pim_type == PIMType.DIG else "digital"
         
@@ -67,8 +67,8 @@ class NeuroSim:
 
         debug = 0 #该参数用于控制neuroSim不输出无效信息
 
-        neuorsim_args = "{} {} {} {} {} {} {}".format(
-            self.dhead, num_ops_per_hbm, l, self.ndec ,dbyte, output_file, debug)
+        neuorsim_args = "{} {} {} {} {} {} {} {}".format(
+            self.dhead, num_ops_per_hbm, l_start, self.ndec ,dbyte, output_file, debug, l_end) #采用预取策略，减少重复计算
 
         run_neurosim_cmd = f"{neurosim_exc} {neuorsim_args}"
         try:
@@ -86,14 +86,14 @@ class NeuroSim:
         # parsing output
 
         # 单位 s pJ        
-        time = 0.
-        energy = 0.
+        time = []
+        energy = []
 
         for line in output_list:
             if "totallatency" in line:
-                time += float(line.split()[-1])
+                time.append(float(line.split()[-1]))
             elif "totalenergy" in line:
-                energy += float(line.split()[-1])
+                energy.append(float(line.split()[-1]))
 
         out = [time, energy]
         return out
@@ -117,18 +117,23 @@ class NeuroSim:
             # yaml_file = os.path.join(self.neurosim_dir, file_name + '.yaml')
             # self.make_yaml_file(yaml_file, file_name, power_constraint)
 
-            result = self.run_neurosim(pim_type, l, num_ops_per_chip, layer.dbyte, file_name)
+            prefatch = 256
+            l_end = min(l + prefatch - 1, 4096)#防止长度溢出
+            result = self.run_neurosim(pim_type, l, l_end, num_ops_per_chip, layer.dbyte, file_name)
             # 返回结果修改为time energy
             # post processing
 
 
-            log = [
-                l, num_ops_per_chip, dhead, self.ndec , dbyte, pim_type.name,
-                power_constraint
-            ] + result
-            self.update_log_file(log)
+            for i in range(len(result[0])):
+                
+                log = [
+                    l+i, num_ops_per_chip, dhead, self.ndec , dbyte, pim_type.name,
+                    power_constraint
+                ] + [result[0][i], result[1][i]]
+                self.update_log_file(log)
             
-            exec_time, energy = result
+            exec_time = result[0][0]
+            energy = result[1][0]
 
             return exec_time, energy
 
@@ -151,11 +156,14 @@ class NeuroSim:
         l = layer.n
         dhead = layer.k
         dbyte = layer.dbyte
+        # print("l: {}, num_ops_per_chip: {}, dbyte: {}, dhead: {}, power_constraint: {}, pim_type: {}".format(
+        #     l, num_ops_per_chip, dbyte, dhead, power_constraint, pim_type.name))
         row = self.df[(self.df['L'] == l) & (self.df['nhead'] == num_ops_per_chip) & \
                       (self.df['ndec']==self.ndec)& (self.df['dbyte'] == dbyte) & (self.df['dhead'] == dhead) & \
                       (self.df['power_constraint'] == power_constraint) &  \
                       (self.df['pim_type'] == pim_type.name)]
         if row.empty:
+            print(l,"miss")
             return self.run(pim_type, layer, power_constraint)
 
         else:

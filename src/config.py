@@ -255,7 +255,7 @@ def make_model_config(name, dtype):
     model_table['GPT-89B'] = [48, 12288, 96, 128, 4, 1]
     model_table['GPT-13B'] = [40, 5120, 40, 128, 4, 1]
     model_table['LLAMA-7B'] = [32, 4096, 32, 128, 8 / 3, 1]
-    model_table['LLAMA-13B'] = [40, 4096, 40, 128, 8 / 3, 1]
+    model_table['LLAMA-13B'] = [40, 5120, 40, 128, 8 / 3, 1]
     model_table['LLAMA-65B'] = [80, 8192, 64, 128, 8 / 3, 1]
     model_table['MT-76B'] = [60, 10240, 40, 128, 4, 1]
     model_table['MT-146B'] = [80, 12288, 80, 128, 4, 1]
