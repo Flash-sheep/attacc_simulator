@@ -2,6 +2,7 @@
 #include "dram_controller/plugin.h"
 #include "memory_system/memory_system.h"
 
+#include <algorithm>
 #include <cstdint>
 #include <vector>
 
@@ -34,7 +35,7 @@ private:
     Clk_t pim_busy_until = 0;   // 用来模拟“片上 buffer / SA 读取 / 片上搬运”的额外开销
 
     int num_arrays = 0;
-    static constexpr int kBlocksPerArray = 32; // 1024 rows / 32 rows-per-block
+    int blocks_per_array = 0;
 
     // block mask：每个 array 的每个 block 一个 uint32
     // bit=0 -> 选通；bit=1 -> 不选通
@@ -76,7 +77,7 @@ private:
     size_t pending_reads = 0;
 
     inline uint32_t& mask_ref(int array_id, int block_id) {
-      return block_masks[array_id * kBlocksPerArray + block_id];
+      return block_masks[array_id * blocks_per_array + block_id];
     }
   };
 
@@ -99,8 +100,9 @@ private:
   int m_row_addr_idx   = -1; // "row" in addr_vec
   int m_col_addr_idx   = -1; // "column" in addr_vec
 
-  int m_row_bits = 0;
-  int m_col_bits = 0;
+  int m_rows_per_array = 0;
+  int m_rows_per_block = 32;
+  int m_blocks_per_array = 0;
 
   std::deque<Request> pending;   // 等待返回 callback 的读
 
@@ -115,16 +117,20 @@ private:
   int m_mv_single_hit_cycles    = 1;
   int m_mv_single_miss_cycles   = 0;   // miss 时额外 SA 读一次
   int m_rd_single_bus_cycles    = 0;   // RD_SINGLE 通过总线传一个 FP16 的额外占用（建议用 nBL 或 1）
+  int m_rd_all_bus_cycles       = 0;
   int m_write_single_cycles = 1;
   int m_write_mul_cycles_per_row = 1;
+  float m_wr_low_watermark = 0.2f;
+  float m_wr_high_watermark = 0.8f;
+  static constexpr int kBSBitPos = 62;
 
 public:
   void init() override {
     // wr watermarks
-    (void)param<float>("wr_low_watermark")
+    m_wr_low_watermark = param<float>("wr_low_watermark")
         .desc("Threshold for switching back to read mode.")
         .default_val(0.2f);
-    (void)param<float>("wr_high_watermark")
+    m_wr_high_watermark = param<float>("wr_high_watermark")
         .desc("Threshold for switching to write mode.")
         .default_val(0.8f);
 
@@ -149,6 +155,22 @@ public:
         .desc("Extra cycles for RD_SINGLE bus transfer of one FP16.")
         .default_val(0);
 
+    m_rd_all_bus_cycles = param<int>("rd_all_bus_cycles")
+        .desc("Extra cycles for RD_ALL bus transfer from local buffer to memory. If 0, defaults to rd_single_bus_cycles.")
+        .default_val(0);
+
+    m_write_single_cycles = param<int>("write_single_cycles")
+        .desc("Extra cycles for PIM_WRITE_SINGLE.")
+        .default_val(1);
+
+    m_write_mul_cycles_per_row = param<int>("write_mul_cycles_per_row")
+        .desc("Extra cycles per selected row for PIM_WRITE_MUL.")
+        .default_val(1);
+
+    m_rows_per_block = param<int>("rows_per_block")
+        .desc("Rows represented by one 32-bit MASK value.")
+        .default_val(32);
+
     // scheduler / refresh
     m_scheduler = create_child_ifce<IScheduler>();
     m_refresh   = create_child_ifce<IRefreshManager>();
@@ -170,16 +192,20 @@ public:
     m_row_addr_idx   = m_dram->m_levels("row");
     m_col_addr_idx   = m_dram->m_levels("column");
 
-    // bits for BS extraction: bs = (base_addr >> (row_bits+col_bits)) & 1
-    m_row_bits = calc_log2(m_dram->m_organization.count[m_row_addr_idx]);
-    m_col_bits = calc_log2(m_dram->m_organization.count[m_col_addr_idx]);
-
     const int num_ag = m_dram->m_organization.count[m_ag_addr_idx];
     const int num_arrays = m_dram->m_organization.count[m_array_addr_idx];
+    m_rows_per_array = m_dram->m_organization.count[m_row_addr_idx];
 
-    if (num_ag <= 0 || num_arrays <= 0) {
+    if (num_ag <= 0 || num_arrays <= 0 || m_rows_per_array <= 0) {
       throw std::runtime_error("ReRAMController: invalid organization counts.");
     }
+    if (m_rows_per_block <= 0 || m_rows_per_block > 32) {
+      throw std::runtime_error("ReRAMController: rows_per_block must be in (0, 32].");
+    }
+    if ((m_rows_per_array % m_rows_per_block) != 0) {
+      throw std::runtime_error("ReRAMController: rows_per_array must be divisible by rows_per_block.");
+    }
+    m_blocks_per_array = m_rows_per_array / m_rows_per_block;
 
     // default for mul_rd_cycles_per_row
     if (m_mul_rd_cycles_per_row == 0) {
@@ -193,6 +219,9 @@ public:
       // 默认把 RD_SINGLE 的 bus 占用当 1
       m_rd_single_bus_cycles = 1;
     }
+    if (m_rd_all_bus_cycles == 0) {
+      m_rd_all_bus_cycles = m_rd_single_bus_cycles;
+    }
 
     m_ag_ctrls.resize(num_ag);
     for (int i = 0; i < num_ag; ++i) {
@@ -205,11 +234,12 @@ public:
       ag.priority_buffer.max_size = 64;
       ag.active_buffer.max_size   = 64;
 
-      ag.wr_low_watermark  = 0.2f;
-      ag.wr_high_watermark = 0.8f;
+      ag.wr_low_watermark  = m_wr_low_watermark;
+      ag.wr_high_watermark = m_wr_high_watermark;
 
       ag.num_arrays = num_arrays;
-      ag.block_masks.assign(num_arrays * AGController::kBlocksPerArray, 0u);
+      ag.blocks_per_array = m_blocks_per_array;
+      ag.block_masks.assign(num_arrays * m_blocks_per_array, 0u);
       ag.buf = {};
       ag.pim_busy_until = 0;
       ag.pending_reads = 0;
@@ -219,7 +249,7 @@ public:
   // ==================== 请求入口 ====================
 
   bool send(Request& req) override {
-    req.final_command = m_dram->m_request_translations(req.type_id);
+    req.final_command = translate_request_type_to_command(req.type_id);
     req.arrive        = m_clk;
 
     if (req.addr_vec.size() <= (size_t)m_ag_addr_idx) {
@@ -269,7 +299,7 @@ public:
   }
 
   bool priority_send(Request& req) override {
-    req.final_command = m_dram->m_request_translations(req.type_id);
+    req.final_command = translate_request_type_to_command(req.type_id);
     req.arrive        = m_clk;
 
     if (req.addr_vec.size() <= (size_t)m_ag_addr_idx) {
@@ -341,7 +371,9 @@ public:
     // 4) 处理完成
     if (req.command == req.final_command) {
       // --- callback reads ---
-      if (req.type_id == Request::Type::Read || req.type_id == Request::Type::PIM_RD_SINGLE) {
+      if (req.type_id == Request::Type::Read ||
+          req.type_id == Request::Type::PIM_RD_SINGLE ||
+          req.type_id == Request::Type::PIM_RD_ALL) {
         req.depart = m_clk + m_dram->m_read_latency;
         pending.push_back(req);
         ag.pending_reads++;
@@ -372,7 +404,7 @@ public:
   Clk_t get_clk() { return m_clk; }
 
 private:
-  static inline bool is_pim_like(Request::Type t) {
+  static inline bool is_pim_like(int t) {
     switch (t) {
       case Request::Type::PIM_NOR:
       case Request::Type::PIM_SET:
@@ -389,15 +421,31 @@ private:
     }
   }
 
+  int translate_request_type_to_command(int type_id) const {
+    switch (type_id) {
+      case Request::Type::Read:             return m_dram->m_commands("RD");
+      case Request::Type::Write:            return m_dram->m_commands("WR");
+      case Request::Type::PIM_NOR:          return m_dram->m_commands("NOR");
+      case Request::Type::PIM_SET:          return m_dram->m_commands("SET");
+      case Request::Type::PIM_MASK:         return m_dram->m_commands("MASK");
+      case Request::Type::PIM_MUL_RD:       return m_dram->m_commands("MUL_RD");
+      case Request::Type::PIM_MV_SINGLE:    return m_dram->m_commands("MV_SINGLE");
+      case Request::Type::PIM_RD_SINGLE:    return m_dram->m_commands("RD_SINGLE");
+      case Request::Type::PIM_RD_ALL:       return m_dram->m_commands("RD_ALL");
+      case Request::Type::PIM_WRITE_SINGLE: return m_dram->m_commands("WRITE_SINGLE");
+      case Request::Type::PIM_WRITE_MUL:    return m_dram->m_commands("WRITE_MUL");
+      default:
+        throw std::runtime_error("ReRAMController: unsupported request type.");
+    }
+  }
+
   inline int get_bs_bit(const Request& req) const {
-    // base_addr: MASK 需要去掉低 32 位 mask
-    uint64_t base = (req.type_id == Request::Type::PIM_MASK || req.type_id == Request::Type::PIM_WRITE_MUL) ? (uint64_t(req.addr) >> 32) : uint64_t(req.addr);
-    return int((base >> (m_row_bits + m_col_bits)) & 0x1ULL);
+    return int((uint64_t(req.addr) >> kBSBitPos) & 0x1ULL);
   }
 
   inline int get_block_id(const Request& req) const {
     int row = static_cast<int>(req.addr_vec[m_row_addr_idx]);
-    return (row >> 5); // 1024 rows => 32 blocks
+    return row / m_rows_per_block;
   }
 
   inline int get_fp16_col(const Request& req) const {
@@ -468,8 +516,9 @@ private:
     // 选通行数（仅在 block 范围内）
     auto selected_rows_in_block = [&](int b) -> int {
       uint32_t mask = ag.mask_ref(array_id, b);
-      int not_sel = __builtin_popcount(mask);
-      return 32 - not_sel;
+      const uint32_t active_mask = (m_rows_per_block == 32) ? 0xffffffffu : ((1u << m_rows_per_block) - 1u);
+      int not_sel = __builtin_popcount(mask & active_mask);
+      return m_rows_per_block - not_sel;
     };
 
     switch (req.type_id) {
@@ -481,18 +530,17 @@ private:
         break;
       }
 
-      case Request::Type::PIM_MUL_RD:
-      case Request::Type::PIM_RD_ALL: {
+      case Request::Type::PIM_MUL_RD: {
         // 将指定范围的一列 FP16 读入 buffer
-        // BS=1 -> 单个 block (32 行), BS=0 -> whole array (1024 行)
-        int rows = (bs == 0) ? 1024 : 32;
+        // BS=1 -> 单个 block, BS=0 -> whole array
+        int rows = (bs == 0) ? m_rows_per_array : m_rows_per_block;
 
         // mask 仅对 block 生效；whole-array 时逐 block 累加
         int selected_rows = 0;
-        if (rows == 32) {
+        if (rows == m_rows_per_block) {
           selected_rows = selected_rows_in_block(block_id);
         } else {
-          for (int b = 0; b < AGController::kBlocksPerArray; ++b) {
+          for (int b = 0; b < m_blocks_per_array; ++b) {
             selected_rows += selected_rows_in_block(b);
           }
         }
@@ -502,10 +550,20 @@ private:
 
         ag.buf.valid       = true;
         ag.buf.array_id    = array_id;
-        ag.buf.whole_array = (rows != 32);
-        ag.buf.block_id    = (rows == 32) ? block_id : -1;
+        ag.buf.whole_array = (rows != m_rows_per_block);
+        ag.buf.block_id    = (rows == m_rows_per_block) ? block_id : -1;
         ag.buf.fp16_col    = fp16_col;
         ag.buf.ready_at    = ag.pim_busy_until;
+        break;
+      }
+
+      case Request::Type::PIM_RD_ALL: {
+        if (ag.buf.valid) {
+          ag.pim_busy_until = std::max(
+              ag.pim_busy_until,
+              m_clk + (Clk_t)std::max(1, m_rd_all_bus_cycles));
+          ag.buf.valid = false;
+        }
         break;
       }
 
@@ -558,13 +616,13 @@ private:
       }
       case Request::Type::PIM_WRITE_MUL: {
 
-    int rows = (bs == 0) ? 1024 : 32;
+    int rows = (bs == 0) ? m_rows_per_array : m_rows_per_block;
     int selected_rows = 0;
 
-    if (rows == 32) {
+    if (rows == m_rows_per_block) {
         selected_rows = selected_rows_in_block(block_id);
     } else {
-        for (int b = 0; b < AGController::kBlocksPerArray; b++) {
+        for (int b = 0; b < m_blocks_per_array; b++) {
             selected_rows += selected_rows_in_block(b);
         }
     }
@@ -599,10 +657,8 @@ private:
   // ==================== 完成的读请求回调 ====================
 
   void serve_completed_reads() {
-    if (pending.empty()) return;
-
-    auto& req = pending.front();
-    if (req.depart <= m_clk) {
+    while (!pending.empty() && pending.front().depart <= m_clk) {
+      auto& req = pending.front();
       if (req.callback) {
         req.callback(req);
       }

@@ -55,6 +55,9 @@ class ReRAMMap final : public ReRAMLinearMapperBase, public Implementation {
   );
 
 public:
+  static constexpr uint64_t kBSBitPos  = 62;
+  static constexpr uint64_t kBSBitMask = (1ULL << kBSBitPos);
+
   void init() override {}
 
   void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
@@ -65,11 +68,18 @@ public:
     req.addr_vec.resize(m_num_levels, -1);
 
     // bit-address: 不再做 tx/byte 对齐
-    Addr_t addr = req.addr;
+    uint64_t addr = static_cast<uint64_t>(req.addr);
+
+    // BS 特例：用于描述访问范围，不参与层级切片
+    if (req.type_id == Request::Type::PIM_MUL_RD ||
+        req.type_id == Request::Type::PIM_RD_ALL ||
+        req.type_id == Request::Type::PIM_WRITE_MUL) {
+      addr &= ~kBSBitMask;
+    }
 
     // MASK 特例：低 32 位是 mask_value，不参与层级切片
     // （mask_value 由 controller 从 req.addr 自行解析）
-    if (req.type_id == Request::Type::PIM_MASK||req.type_id == Request::Type::PIM_WRITE_MUL) {
+    if (req.type_id == Request::Type::PIM_MASK || req.type_id == Request::Type::PIM_WRITE_MUL) {
       addr = (addr >> 32);
     }
 

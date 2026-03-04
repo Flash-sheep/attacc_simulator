@@ -19,6 +19,8 @@ namespace fs = std::filesystem;
  *
  * ADDR 为 bit 级地址（精确到 row/col 的 bit）。
  * 对 PIM_MASK：ADDR 的低 32 位为 mask_value，高位为 base_addr。
+ * 对 PIM_WRITE_MUL：ADDR 的低 32 位为 write_value，高位为 base_addr。
+ * 对 PIM_MUL_RD / PIM_RD_ALL / PIM_WRITE_MUL：ADDR 的 bit62 作为 BS（0=whole array, 1=single block）。
  */
 class ReRAMTrace : public IFrontEnd, public Implementation {
   RAMULATOR_REGISTER_IMPLEMENTATION(
@@ -30,7 +32,7 @@ class ReRAMTrace : public IFrontEnd, public Implementation {
 
 private:
   struct Trace {
-    Request::Type type;
+    int type;
     Addr_t addr;
   };
   std::vector<Trace> m_trace;
@@ -80,7 +82,7 @@ public:
   }
 
 private:
-  static Request::Type parse_op(const std::string& op, const std::string& file, size_t line_no) {
+  static int parse_op(const std::string& op, const std::string& file, size_t line_no) {
     // 兼容别名：NOR/SET 等
     if (op == "LD") return Request::Type::Read;
     if (op == "ST") return Request::Type::Write;
@@ -142,7 +144,7 @@ private:
       const std::string& op = tokens[0];
       const std::string& addr_str = tokens[1];
 
-      Request::Type type = parse_op(op, file_path_str, line_no);
+      int type = parse_op(op, file_path_str, line_no);
       Addr_t addr = parse_addr(addr_str, file_path_str, line_no);
 
       m_trace.push_back({type, addr});
