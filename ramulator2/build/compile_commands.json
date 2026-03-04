@@ -225,6 +225,11 @@
   "file": "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/pim_loadstore_trace.cpp"
 },
 {
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/frontend",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o -c /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp"
+},
+{
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/translation",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-translation.dir/impl/no_translation.cpp.o -c /home/long/attacc_simulator/ramulator2/src/translation/impl/no_translation.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/translation/impl/no_translation.cpp"
@@ -250,6 +255,11 @@
   "file": "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_DRAM_system.cpp"
 },
 {
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/memory_system",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o -c /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp"
+},
+{
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/linear_mappers.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/linear_mappers.cpp"
@@ -266,6 +276,11 @@
 },
 {
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/addr_mapper",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp"
 },
@@ -278,6 +293,11 @@
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp"
 },
 {
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
@@ -301,6 +321,11 @@
 },
 {
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/reram_pim_controller.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/reram_pim_controller.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/generic_scheduler.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/generic_scheduler.cpp"
 },
@@ -308,6 +333,11 @@
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/reram_scheduler.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/reram_scheduler.cpp"
 },
 {
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
@@ -326,6 +356,11 @@
 },
 {
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/reram_no_refresh.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/reram_no_refresh.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp"
 },
@@ -338,5 +373,10 @@
   "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
   "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp",
   "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp"
+},
+{
+  "directory": "/home/long/attacc_simulator/ramulator2/build/src/dram_controller",
+  "command": "/usr/bin/c++  -I/home/long/attacc_simulator/ramulator2/ext/yaml-cpp/include -I/home/long/attacc_simulator/ramulator2/ext/spdlog/include -I/home/long/attacc_simulator/ramulator2/ext/argparse/include -I/home/long/attacc_simulator/ramulator2/src -O3 -DNDEBUG -fPIC -std=c++20 -o CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/reram_trace_recorder.cpp",
+  "file": "/home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/reram_trace_recorder.cpp"
 }
 ]

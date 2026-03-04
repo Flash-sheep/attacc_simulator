@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.o.d"
   "CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o"
   "CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o.d"
+  "CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o"
+  "CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o.d"
   "CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o"
   "CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o.d"
 )

@@ -97,8 +97,23 @@ src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp -o CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.s
 
+src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o: src/dram/CMakeFiles/ramulator-dram.dir/flags.make
+src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o: ../src/dram/impl/ReRAM.cpp
+src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o: src/dram/CMakeFiles/ramulator-dram.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o -MF CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o.d -o CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp
+
+src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp > CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.i
+
+src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp -o CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.s
+
 ramulator-dram: src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3.cpp.o
 ramulator-dram: src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.o
+ramulator-dram: src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o
 ramulator-dram: src/dram/CMakeFiles/ramulator-dram.dir/build.make
 .PHONY : ramulator-dram
 

@@ -318,7 +318,7 @@ CMakeFiles/ramulator.dir/all: src/dram_controller/CMakeFiles/ramulator-controlle
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ramulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 70
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ramulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : CMakeFiles/ramulator.dir/rule
@@ -341,12 +341,12 @@ CMakeFiles/ramulator-exe.dir/all: _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/a
 CMakeFiles/ramulator-exe.dir/all: _deps/spdlog-build/CMakeFiles/spdlog.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ramulator-exe.dir/build.make CMakeFiles/ramulator-exe.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ramulator-exe.dir/build.make CMakeFiles/ramulator-exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=26,27 "Built target ramulator-exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=32,33 "Built target ramulator-exe"
 .PHONY : CMakeFiles/ramulator-exe.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ramulator-exe.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 72
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ramulator-exe.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : CMakeFiles/ramulator-exe.dir/rule
@@ -1095,7 +1095,7 @@ _deps/yaml-cpp-build/CMakeFiles/ContinuousSubmit.dir/clean:
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/all:
 	$(MAKE) $(MAKESILENT) -f _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/build.make _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/build.make _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72 "Built target yaml-cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80 "Built target yaml-cpp"
 .PHONY : _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1121,7 +1121,7 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/clean:
 _deps/spdlog-build/CMakeFiles/spdlog.dir/all:
 	$(MAKE) $(MAKESILENT) -f _deps/spdlog-build/CMakeFiles/spdlog.dir/build.make _deps/spdlog-build/CMakeFiles/spdlog.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps/spdlog-build/CMakeFiles/spdlog.dir/build.make _deps/spdlog-build/CMakeFiles/spdlog.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=35,36,37,38,39,40,41,42 "Built target spdlog"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=43,44,45,46,47,48,49,50 "Built target spdlog"
 .PHONY : _deps/spdlog-build/CMakeFiles/spdlog.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1147,7 +1147,7 @@ _deps/spdlog-build/CMakeFiles/spdlog.dir/clean:
 src/base/CMakeFiles/ramulator-base.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/base/CMakeFiles/ramulator-base.dir/build.make src/base/CMakeFiles/ramulator-base.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/base/CMakeFiles/ramulator-base.dir/build.make src/base/CMakeFiles/ramulator-base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=6,7,8,9,10,11 "Built target ramulator-base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target ramulator-base"
 .PHONY : src/base/CMakeFiles/ramulator-base.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1173,12 +1173,12 @@ src/base/CMakeFiles/ramulator-base.dir/clean:
 src/frontend/CMakeFiles/ramulator-frontend.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=28,29 "Built target ramulator-frontend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=34,35,36 "Built target ramulator-frontend"
 .PHONY : src/frontend/CMakeFiles/ramulator-frontend.dir/all
 
 # Build rule for subdir invocation for target.
 src/frontend/CMakeFiles/ramulator-frontend.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/frontend/CMakeFiles/ramulator-frontend.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : src/frontend/CMakeFiles/ramulator-frontend.dir/rule
@@ -1199,7 +1199,7 @@ src/frontend/CMakeFiles/ramulator-frontend.dir/clean:
 src/translation/CMakeFiles/ramulator-translation.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/ramulator-translation.dir/build.make src/translation/CMakeFiles/ramulator-translation.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/translation/CMakeFiles/ramulator-translation.dir/build.make src/translation/CMakeFiles/ramulator-translation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=33,34 "Built target ramulator-translation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=41,42 "Built target ramulator-translation"
 .PHONY : src/translation/CMakeFiles/ramulator-translation.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1225,12 +1225,12 @@ src/translation/CMakeFiles/ramulator-translation.dir/clean:
 src/memory_system/CMakeFiles/ramulator-memorysystem.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=30,31,32 "Built target ramulator-memorysystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=37,38,39,40 "Built target ramulator-memorysystem"
 .PHONY : src/memory_system/CMakeFiles/ramulator-memorysystem.dir/all
 
 # Build rule for subdir invocation for target.
 src/memory_system/CMakeFiles/ramulator-memorysystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/memory_system/CMakeFiles/ramulator-memorysystem.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : src/memory_system/CMakeFiles/ramulator-memorysystem.dir/rule
@@ -1251,12 +1251,12 @@ src/memory_system/CMakeFiles/ramulator-memorysystem.dir/clean:
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=2,3,4,5 "Built target ramulator-addrmapper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=2,3,4,5,6 "Built target ramulator-addrmapper"
 .PHONY : src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/all
 
 # Build rule for subdir invocation for target.
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/rule
@@ -1277,12 +1277,12 @@ src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/clean:
 src/dram/CMakeFiles/ramulator-dram.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=24,25 "Built target ramulator-dram"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=29,30,31 "Built target ramulator-dram"
 .PHONY : src/dram/CMakeFiles/ramulator-dram.dir/all
 
 # Build rule for subdir invocation for target.
 src/dram/CMakeFiles/ramulator-dram.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dram/CMakeFiles/ramulator-dram.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : src/dram/CMakeFiles/ramulator-dram.dir/rule
@@ -1303,12 +1303,12 @@ src/dram/CMakeFiles/ramulator-dram.dir/clean:
 src/dram_controller/CMakeFiles/ramulator-controller.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=12,13,14,15,16,17,18,19,20,21,22,23 "Built target ramulator-controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 "Built target ramulator-controller"
 .PHONY : src/dram_controller/CMakeFiles/ramulator-controller.dir/all
 
 # Build rule for subdir invocation for target.
 src/dram_controller/CMakeFiles/ramulator-controller.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dram_controller/CMakeFiles/ramulator-controller.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/long/attacc_simulator/ramulator2/build/CMakeFiles 0
 .PHONY : src/dram_controller/CMakeFiles/ramulator-controller.dir/rule

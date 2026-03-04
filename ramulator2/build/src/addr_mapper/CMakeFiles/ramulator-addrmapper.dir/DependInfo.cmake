@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_linear_mappers.cpp" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_linear_mappers.cpp.o" "gcc" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_linear_mappers.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_pim_linear_mappers.cpp" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.o" "gcc" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/linear_mappers.cpp" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o" "gcc" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o.d"
+  "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o" "gcc" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o" "gcc" "src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o.d"
   )
 

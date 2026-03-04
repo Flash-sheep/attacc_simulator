@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_DRAM_system.cpp" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.o" "gcc" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.o.d"
+  "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o" "gcc" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/dummy_memory_system.cpp" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/dummy_memory_system.cpp.o" "gcc" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/dummy_memory_system.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/memory_system/impl/generic_DRAM_system.cpp" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/generic_DRAM_system.cpp.o" "gcc" "src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/generic_DRAM_system.cpp.o.d"
   )

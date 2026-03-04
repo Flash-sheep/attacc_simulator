@@ -244,6 +244,30 @@ impl/memory_trace/pim_loadstore_trace.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.s
 .PHONY : impl/memory_trace/pim_loadstore_trace.cpp.s
 
+impl/memory_trace/reram_loadstore_trace.o: impl/memory_trace/reram_loadstore_trace.cpp.o
+.PHONY : impl/memory_trace/reram_loadstore_trace.o
+
+# target to build an object file
+impl/memory_trace/reram_loadstore_trace.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o
+.PHONY : impl/memory_trace/reram_loadstore_trace.cpp.o
+
+impl/memory_trace/reram_loadstore_trace.i: impl/memory_trace/reram_loadstore_trace.cpp.i
+.PHONY : impl/memory_trace/reram_loadstore_trace.i
+
+# target to preprocess a source file
+impl/memory_trace/reram_loadstore_trace.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.i
+.PHONY : impl/memory_trace/reram_loadstore_trace.cpp.i
+
+impl/memory_trace/reram_loadstore_trace.s: impl/memory_trace/reram_loadstore_trace.cpp.s
+.PHONY : impl/memory_trace/reram_loadstore_trace.s
+
+# target to generate assembly for a file
+impl/memory_trace/reram_loadstore_trace.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/frontend/CMakeFiles/ramulator-frontend.dir/build.make src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.s
+.PHONY : impl/memory_trace/reram_loadstore_trace.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -265,6 +289,9 @@ help:
 	@echo "... impl/memory_trace/pim_loadstore_trace.o"
 	@echo "... impl/memory_trace/pim_loadstore_trace.i"
 	@echo "... impl/memory_trace/pim_loadstore_trace.s"
+	@echo "... impl/memory_trace/reram_loadstore_trace.o"
+	@echo "... impl/memory_trace/reram_loadstore_trace.i"
+	@echo "... impl/memory_trace/reram_loadstore_trace.s"
 .PHONY : help
 
 

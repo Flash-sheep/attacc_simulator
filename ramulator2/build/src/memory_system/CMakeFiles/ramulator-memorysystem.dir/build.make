@@ -111,9 +111,24 @@ src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/memory_system && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_DRAM_system.cpp -o CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.s
 
+src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/flags.make
+src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o: ../src/memory_system/impl/PIM_ReRAM_system.cpp
+src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/memory_system && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o -MF CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o.d -o CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o -c /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp
+
+src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/memory_system && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp > CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.i
+
+src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/memory_system && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/memory_system/impl/PIM_ReRAM_system.cpp -o CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.s
+
 ramulator-memorysystem: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/dummy_memory_system.cpp.o
 ramulator-memorysystem: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/generic_DRAM_system.cpp.o
 ramulator-memorysystem: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.o
+ramulator-memorysystem: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o
 ramulator-memorysystem: src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make
 .PHONY : ramulator-memorysystem
 

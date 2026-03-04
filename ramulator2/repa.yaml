@@ -1,0 +1,37 @@
+Frontend:
+  impl: ReRAMTrace
+  path: ./trace_gen/repa.trace
+  clock_ratio: 1
+
+  Translation:
+    impl: NoTranslation
+    max_addr: 2147483648
+              
+
+MemorySystem:
+  impl: ReRAM
+  clock_ratio: 1
+  DRAM:
+    impl: ReRAM
+    org:
+      preset: ReRAM_32GB
+      channel: 16
+      channel_width: 512
+    timing:
+      preset: ReRAM_Leader_4.8Gbps
+      #preset: HBM3_5.2Gbps_NPC
+
+  Controller:
+    impl: ReRAM
+    Scheduler:
+      impl: ReRAM
+    RefreshManager:
+      impl: ReRAMNo
+      #impl: No
+    plugins:
+    - ControllerPlugin:
+        impl: ReRAMTraceRecorder
+        path: ./log/reram_cmd.log
+
+  AddrMapper:
+    impl: ReRAM-Linear

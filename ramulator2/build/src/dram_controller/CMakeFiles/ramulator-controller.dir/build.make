@@ -125,10 +125,24 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/hbm3_pim_controller
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/hbm3_pim_controller.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/hbm3_pim_controller.cpp -o CMakeFiles/ramulator-controller.dir/impl/hbm3_pim_controller.cpp.s
 
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o: ../src/dram_controller/impl/reram_pim_controller.cpp
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/reram_pim_controller.cpp
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/reram_pim_controller.cpp > CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.i
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/reram_pim_controller.cpp -o CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.s
+
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o: ../src/dram_controller/impl/scheduler/generic_scheduler.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/generic_scheduler.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.i: cmake_force
@@ -142,7 +156,7 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_s
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o: ../src/dram_controller/impl/scheduler/pim_scheduler.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.i: cmake_force
@@ -153,10 +167,24 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_sched
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/pim_scheduler.cpp -o CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.s
 
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o: ../src/dram_controller/impl/scheduler/reram_scheduler.cpp
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/reram_scheduler.cpp
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/reram_scheduler.cpp > CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.i
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/scheduler/reram_scheduler.cpp -o CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.s
+
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o: ../src/dram_controller/impl/refresh/all_bank_refresh.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.i: cmake_force
@@ -170,7 +198,7 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_re
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o: ../src/dram_controller/impl/refresh/all_bank_refresh_hbm3.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/all_bank_refresh_hbm3.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.i: cmake_force
@@ -184,7 +212,7 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_re
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o: ../src/dram_controller/impl/refresh/no_refresh.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/no_refresh.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.i: cmake_force
@@ -195,10 +223,24 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/no_refresh.cpp -o CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.s
 
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o: ../src/dram_controller/impl/refresh/reram_no_refresh.cpp
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/reram_no_refresh.cpp
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/reram_no_refresh.cpp > CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.i
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/refresh/reram_no_refresh.cpp -o CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.s
+
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o: ../src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/hbm3_trace_recorder.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.i: cmake_force
@@ -212,7 +254,7 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_r
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o: ../src/dram_controller/impl/plugin/trace_recorder.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/trace_recorder.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.i: cmake_force
@@ -226,7 +268,7 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_record
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o: ../src/dram_controller/impl/plugin/cmd_counter.cpp
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp
 
 src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.i: cmake_force
@@ -237,18 +279,36 @@ src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/cmd_counter.cpp -o CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.s
 
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/flags.make
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o: ../src/dram_controller/impl/plugin/reram_trace_recorder.cpp
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o: src/dram_controller/CMakeFiles/ramulator-controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o -MF CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o.d -o CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o -c /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/reram_trace_recorder.cpp
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/reram_trace_recorder.cpp > CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.i
+
+src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/dram_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/dram_controller/impl/plugin/reram_trace_recorder.cpp -o CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.s
+
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/dummy_controller.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/generic_dram_controller.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/hbm3_controller.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/hbm3_pim_controller.cpp.o
+ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/generic_scheduler.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.o
+ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/all_bank_refresh_hbm3.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.o
+ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/trace_recorder.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/cmd_counter.cpp.o
+ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o
 ramulator-controller: src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make
 .PHONY : ramulator-controller
 

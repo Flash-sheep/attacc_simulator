@@ -404,6 +404,8 @@ class DIGPIM:
         exec_time = traffic / interface_bw
 
         energy = traffic * self.energy_table['comm'] * self.num_neurosim
+        
+        # print(exec_time,interface_bw,traffic,self.energy_table['comm'],self.num_neurosim)
 
         return exec_time, [0, 0, 0, 0, 0, energy]
 

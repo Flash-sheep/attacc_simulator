@@ -111,10 +111,24 @@ src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/addr_mapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/hbm3_pim_linear_mappers.cpp -o CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.s
 
+src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/flags.make
+src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o: ../src/addr_mapper/impl/reram_pim_linear_mappers.cpp
+src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/addr_mapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o -MF CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o.d -o CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp
+
+src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/addr_mapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp > CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.i
+
+src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/addr_mapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/reram_pim_linear_mappers.cpp -o CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.s
+
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/flags.make
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o: ../src/addr_mapper/impl/rit.cpp
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o"
 	cd /home/long/attacc_simulator/ramulator2/build/src/addr_mapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o -MF CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o.d -o CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o -c /home/long/attacc_simulator/ramulator2/src/addr_mapper/impl/rit.cpp
 
 src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.i: cmake_force
@@ -128,6 +142,7 @@ src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.s: cmake_force
 ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.o
 ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_linear_mappers.cpp.o
 ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/hbm3_pim_linear_mappers.cpp.o
+ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o
 ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/rit.cpp.o
 ramulator-addrmapper: src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make
 .PHONY : ramulator-addrmapper

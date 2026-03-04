@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/loadstore_trace.cpp" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/loadstore_trace.cpp.o" "gcc" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/loadstore_trace.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/pim_loadstore_trace.cpp" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.o" "gcc" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.o.d"
+  "/home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o" "gcc" "src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o.d"
   )
 
 # Targets to which this target links.

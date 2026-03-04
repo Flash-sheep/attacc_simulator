@@ -220,6 +220,30 @@ impl/PIM_DRAM_system.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_DRAM_system.cpp.s
 .PHONY : impl/PIM_DRAM_system.cpp.s
 
+impl/PIM_ReRAM_system.o: impl/PIM_ReRAM_system.cpp.o
+.PHONY : impl/PIM_ReRAM_system.o
+
+# target to build an object file
+impl/PIM_ReRAM_system.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.o
+.PHONY : impl/PIM_ReRAM_system.cpp.o
+
+impl/PIM_ReRAM_system.i: impl/PIM_ReRAM_system.cpp.i
+.PHONY : impl/PIM_ReRAM_system.i
+
+# target to preprocess a source file
+impl/PIM_ReRAM_system.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.i
+.PHONY : impl/PIM_ReRAM_system.cpp.i
+
+impl/PIM_ReRAM_system.s: impl/PIM_ReRAM_system.cpp.s
+.PHONY : impl/PIM_ReRAM_system.s
+
+# target to generate assembly for a file
+impl/PIM_ReRAM_system.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/memory_system/CMakeFiles/ramulator-memorysystem.dir/build.make src/memory_system/CMakeFiles/ramulator-memorysystem.dir/impl/PIM_ReRAM_system.cpp.s
+.PHONY : impl/PIM_ReRAM_system.cpp.s
+
 impl/dummy_memory_system.o: impl/dummy_memory_system.cpp.o
 .PHONY : impl/dummy_memory_system.o
 
@@ -286,6 +310,9 @@ help:
 	@echo "... impl/PIM_DRAM_system.o"
 	@echo "... impl/PIM_DRAM_system.i"
 	@echo "... impl/PIM_DRAM_system.s"
+	@echo "... impl/PIM_ReRAM_system.o"
+	@echo "... impl/PIM_ReRAM_system.i"
+	@echo "... impl/PIM_ReRAM_system.s"
 	@echo "... impl/dummy_memory_system.o"
 	@echo "... impl/dummy_memory_system.i"
 	@echo "... impl/dummy_memory_system.s"

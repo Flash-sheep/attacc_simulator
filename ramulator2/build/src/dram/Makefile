@@ -244,6 +244,30 @@ impl/HBM3.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3.cpp.s
 .PHONY : impl/HBM3.cpp.s
 
+impl/ReRAM.o: impl/ReRAM.cpp.o
+.PHONY : impl/ReRAM.o
+
+# target to build an object file
+impl/ReRAM.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o
+.PHONY : impl/ReRAM.cpp.o
+
+impl/ReRAM.i: impl/ReRAM.cpp.i
+.PHONY : impl/ReRAM.i
+
+# target to preprocess a source file
+impl/ReRAM.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.i
+.PHONY : impl/ReRAM.cpp.i
+
+impl/ReRAM.s: impl/ReRAM.cpp.s
+.PHONY : impl/ReRAM.s
+
+# target to generate assembly for a file
+impl/ReRAM.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram/CMakeFiles/ramulator-dram.dir/build.make src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.s
+.PHONY : impl/ReRAM.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -265,6 +289,9 @@ help:
 	@echo "... impl/HBM3.o"
 	@echo "... impl/HBM3.i"
 	@echo "... impl/HBM3.s"
+	@echo "... impl/ReRAM.o"
+	@echo "... impl/ReRAM.i"
+	@echo "... impl/ReRAM.s"
 .PHONY : help
 
 

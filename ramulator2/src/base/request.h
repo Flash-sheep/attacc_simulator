@@ -21,6 +21,15 @@ struct Request {
       Read = 0, 
       Write = 1,
 
+      // ReRAM PIM-style 原子操作
+      PIM_NOR = 14,
+      PIM_SET = 15,
+      PIM_MASK = 16,    // 行选通 mask 配置
+      PIM_MUL_RD = 17, // 块读到 buffer（概念）
+      PIM_MV_SINGLE = 18, // 片上搬运（概念
+      PIM_RD_SINGLE = 19, // 单个 FP16 读（概念）
+      PIM_RD_ALL = 20,    // 块读（概念）
+
       // PIM requests
       PIM_MAC_AB = 4,
       PIM_MAC_SB = 5,

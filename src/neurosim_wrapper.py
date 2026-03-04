@@ -18,6 +18,7 @@ class NeuroSim:
         self.df = pd.DataFrame()
         self.neurosim_dir = neurosim_dir
         self.output_log = output_log
+        print(output_log)
         if os.path.exists(output_log):
             self.df = pd.read_csv(output_log)
         self.tCK = 0.769  # ns
@@ -117,7 +118,10 @@ class NeuroSim:
             # yaml_file = os.path.join(self.neurosim_dir, file_name + '.yaml')
             # self.make_yaml_file(yaml_file, file_name, power_constraint)
 
-            prefatch = 256
+            print("l: {}, num_ops_per_chip: {}, dbyte: {}, dhead: {}, ndec: {}, power_constraint: {}, pim_type: {}".format(
+            l, num_ops_per_chip, dbyte, dhead,self.ndec ,power_constraint, pim_type.name))
+            
+            prefatch = 512
             l_end = min(l + prefatch - 1, 4096)#防止长度溢出
             result = self.run_neurosim(pim_type, l, l_end, num_ops_per_chip, layer.dbyte, file_name)
             # 返回结果修改为time energy
@@ -156,8 +160,7 @@ class NeuroSim:
         l = layer.n
         dhead = layer.k
         dbyte = layer.dbyte
-        # print("l: {}, num_ops_per_chip: {}, dbyte: {}, dhead: {}, power_constraint: {}, pim_type: {}".format(
-        #     l, num_ops_per_chip, dbyte, dhead, power_constraint, pim_type.name))
+        
         row = self.df[(self.df['L'] == l) & (self.df['nhead'] == num_ops_per_chip) & \
                       (self.df['ndec']==self.ndec)& (self.df['dbyte'] == dbyte) & (self.df['dhead'] == dhead) & \
                       (self.df['power_constraint'] == power_constraint) &  \

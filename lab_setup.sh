@@ -1,23 +1,24 @@
 #!/bin/bash
 
 # Base command
-BASE_CMD="python main.py --gpu A100a --ngpu 1 --ffopt --pipeopt --batch 1"
+BASE_CMD="python main.py --gpu A100a --ngpu 1 --ffopt --pipeopt"
 
 # Systems to test with their corresponding PIM and numhbm values
 declare -A SYSTEMS=(
-    ["dgx"]="none 0"
-    ["dgx-attacc"]="bank 2"
+    # ["dgx"]="none 0"
+    ["dgx-attacc"]="bank 1"
     # ["dgx-neurosim"]="digital 1"
 )
 
 # Models to test
-MODELS=("LLAMA-65B")
+MODELS=("QWEN2-1.5B" "LLAMA-7B" "LLAMA-13B")
 
 # Input sequence lengths and corresponding output lengths
-LIN_LENS=("128 1024 1920" "256 2048 3840")
+# LIN_LENS=("128 1024 1920" "256 2048 3840")
+LIN_LENS=("42")
 
 # Batch sizes
-BATCHES=(1 4 8 16)
+BATCHES=(1 4 16 32 64)
 
 # Loop through each system configuration
 for system in "${!SYSTEMS[@]}"; do
@@ -43,6 +44,8 @@ for system in "${!SYSTEMS[@]}"; do
                 target=4096
             fi
             
+            target=62
+
             # Loop through each input length in this group
             for lin in "${lins[@]}"; do
                 lout=$((target - lin))

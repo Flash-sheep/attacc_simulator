@@ -268,6 +268,30 @@ impl/linear_mappers.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/linear_mappers.cpp.s
 .PHONY : impl/linear_mappers.cpp.s
 
+impl/reram_pim_linear_mappers.o: impl/reram_pim_linear_mappers.cpp.o
+.PHONY : impl/reram_pim_linear_mappers.o
+
+# target to build an object file
+impl/reram_pim_linear_mappers.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.o
+.PHONY : impl/reram_pim_linear_mappers.cpp.o
+
+impl/reram_pim_linear_mappers.i: impl/reram_pim_linear_mappers.cpp.i
+.PHONY : impl/reram_pim_linear_mappers.i
+
+# target to preprocess a source file
+impl/reram_pim_linear_mappers.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.i
+.PHONY : impl/reram_pim_linear_mappers.cpp.i
+
+impl/reram_pim_linear_mappers.s: impl/reram_pim_linear_mappers.cpp.s
+.PHONY : impl/reram_pim_linear_mappers.s
+
+# target to generate assembly for a file
+impl/reram_pim_linear_mappers.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/build.make src/addr_mapper/CMakeFiles/ramulator-addrmapper.dir/impl/reram_pim_linear_mappers.cpp.s
+.PHONY : impl/reram_pim_linear_mappers.cpp.s
+
 impl/rit.o: impl/rit.cpp.o
 .PHONY : impl/rit.o
 
@@ -316,6 +340,9 @@ help:
 	@echo "... impl/linear_mappers.o"
 	@echo "... impl/linear_mappers.i"
 	@echo "... impl/linear_mappers.s"
+	@echo "... impl/reram_pim_linear_mappers.o"
+	@echo "... impl/reram_pim_linear_mappers.i"
+	@echo "... impl/reram_pim_linear_mappers.s"
 	@echo "... impl/rit.o"
 	@echo "... impl/rit.i"
 	@echo "... impl/rit.s"

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3-PIM.cpp" "src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.o" "gcc" "src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3-PIM.cpp.o.d"
   "/home/long/attacc_simulator/ramulator2/src/dram/impl/HBM3.cpp" "src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3.cpp.o" "gcc" "src/dram/CMakeFiles/ramulator-dram.dir/impl/HBM3.cpp.o.d"
+  "/home/long/attacc_simulator/ramulator2/src/dram/impl/ReRAM.cpp" "src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o" "gcc" "src/dram/CMakeFiles/ramulator-dram.dir/impl/ReRAM.cpp.o.d"
   )
 
 # Targets to which this target links.

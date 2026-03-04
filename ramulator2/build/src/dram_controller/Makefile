@@ -340,6 +340,30 @@ impl/plugin/hbm3_trace_recorder.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/hbm3_trace_recorder.cpp.s
 .PHONY : impl/plugin/hbm3_trace_recorder.cpp.s
 
+impl/plugin/reram_trace_recorder.o: impl/plugin/reram_trace_recorder.cpp.o
+.PHONY : impl/plugin/reram_trace_recorder.o
+
+# target to build an object file
+impl/plugin/reram_trace_recorder.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.o
+.PHONY : impl/plugin/reram_trace_recorder.cpp.o
+
+impl/plugin/reram_trace_recorder.i: impl/plugin/reram_trace_recorder.cpp.i
+.PHONY : impl/plugin/reram_trace_recorder.i
+
+# target to preprocess a source file
+impl/plugin/reram_trace_recorder.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.i
+.PHONY : impl/plugin/reram_trace_recorder.cpp.i
+
+impl/plugin/reram_trace_recorder.s: impl/plugin/reram_trace_recorder.cpp.s
+.PHONY : impl/plugin/reram_trace_recorder.s
+
+# target to generate assembly for a file
+impl/plugin/reram_trace_recorder.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/plugin/reram_trace_recorder.cpp.s
+.PHONY : impl/plugin/reram_trace_recorder.cpp.s
+
 impl/plugin/trace_recorder.o: impl/plugin/trace_recorder.cpp.o
 .PHONY : impl/plugin/trace_recorder.o
 
@@ -436,6 +460,54 @@ impl/refresh/no_refresh.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/no_refresh.cpp.s
 .PHONY : impl/refresh/no_refresh.cpp.s
 
+impl/refresh/reram_no_refresh.o: impl/refresh/reram_no_refresh.cpp.o
+.PHONY : impl/refresh/reram_no_refresh.o
+
+# target to build an object file
+impl/refresh/reram_no_refresh.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.o
+.PHONY : impl/refresh/reram_no_refresh.cpp.o
+
+impl/refresh/reram_no_refresh.i: impl/refresh/reram_no_refresh.cpp.i
+.PHONY : impl/refresh/reram_no_refresh.i
+
+# target to preprocess a source file
+impl/refresh/reram_no_refresh.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.i
+.PHONY : impl/refresh/reram_no_refresh.cpp.i
+
+impl/refresh/reram_no_refresh.s: impl/refresh/reram_no_refresh.cpp.s
+.PHONY : impl/refresh/reram_no_refresh.s
+
+# target to generate assembly for a file
+impl/refresh/reram_no_refresh.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/refresh/reram_no_refresh.cpp.s
+.PHONY : impl/refresh/reram_no_refresh.cpp.s
+
+impl/reram_pim_controller.o: impl/reram_pim_controller.cpp.o
+.PHONY : impl/reram_pim_controller.o
+
+# target to build an object file
+impl/reram_pim_controller.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.o
+.PHONY : impl/reram_pim_controller.cpp.o
+
+impl/reram_pim_controller.i: impl/reram_pim_controller.cpp.i
+.PHONY : impl/reram_pim_controller.i
+
+# target to preprocess a source file
+impl/reram_pim_controller.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.i
+.PHONY : impl/reram_pim_controller.cpp.i
+
+impl/reram_pim_controller.s: impl/reram_pim_controller.cpp.s
+.PHONY : impl/reram_pim_controller.s
+
+# target to generate assembly for a file
+impl/reram_pim_controller.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/reram_pim_controller.cpp.s
+.PHONY : impl/reram_pim_controller.cpp.s
+
 impl/scheduler/generic_scheduler.o: impl/scheduler/generic_scheduler.cpp.o
 .PHONY : impl/scheduler/generic_scheduler.o
 
@@ -484,6 +556,30 @@ impl/scheduler/pim_scheduler.cpp.s:
 	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/pim_scheduler.cpp.s
 .PHONY : impl/scheduler/pim_scheduler.cpp.s
 
+impl/scheduler/reram_scheduler.o: impl/scheduler/reram_scheduler.cpp.o
+.PHONY : impl/scheduler/reram_scheduler.o
+
+# target to build an object file
+impl/scheduler/reram_scheduler.cpp.o:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.o
+.PHONY : impl/scheduler/reram_scheduler.cpp.o
+
+impl/scheduler/reram_scheduler.i: impl/scheduler/reram_scheduler.cpp.i
+.PHONY : impl/scheduler/reram_scheduler.i
+
+# target to preprocess a source file
+impl/scheduler/reram_scheduler.cpp.i:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.i
+.PHONY : impl/scheduler/reram_scheduler.cpp.i
+
+impl/scheduler/reram_scheduler.s: impl/scheduler/reram_scheduler.cpp.s
+.PHONY : impl/scheduler/reram_scheduler.s
+
+# target to generate assembly for a file
+impl/scheduler/reram_scheduler.cpp.s:
+	cd /home/long/attacc_simulator/ramulator2/build && $(MAKE) $(MAKESILENT) -f src/dram_controller/CMakeFiles/ramulator-controller.dir/build.make src/dram_controller/CMakeFiles/ramulator-controller.dir/impl/scheduler/reram_scheduler.cpp.s
+.PHONY : impl/scheduler/reram_scheduler.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -517,6 +613,9 @@ help:
 	@echo "... impl/plugin/hbm3_trace_recorder.o"
 	@echo "... impl/plugin/hbm3_trace_recorder.i"
 	@echo "... impl/plugin/hbm3_trace_recorder.s"
+	@echo "... impl/plugin/reram_trace_recorder.o"
+	@echo "... impl/plugin/reram_trace_recorder.i"
+	@echo "... impl/plugin/reram_trace_recorder.s"
 	@echo "... impl/plugin/trace_recorder.o"
 	@echo "... impl/plugin/trace_recorder.i"
 	@echo "... impl/plugin/trace_recorder.s"
@@ -529,12 +628,21 @@ help:
 	@echo "... impl/refresh/no_refresh.o"
 	@echo "... impl/refresh/no_refresh.i"
 	@echo "... impl/refresh/no_refresh.s"
+	@echo "... impl/refresh/reram_no_refresh.o"
+	@echo "... impl/refresh/reram_no_refresh.i"
+	@echo "... impl/refresh/reram_no_refresh.s"
+	@echo "... impl/reram_pim_controller.o"
+	@echo "... impl/reram_pim_controller.i"
+	@echo "... impl/reram_pim_controller.s"
 	@echo "... impl/scheduler/generic_scheduler.o"
 	@echo "... impl/scheduler/generic_scheduler.i"
 	@echo "... impl/scheduler/generic_scheduler.s"
 	@echo "... impl/scheduler/pim_scheduler.o"
 	@echo "... impl/scheduler/pim_scheduler.i"
 	@echo "... impl/scheduler/pim_scheduler.s"
+	@echo "... impl/scheduler/reram_scheduler.o"
+	@echo "... impl/scheduler/reram_scheduler.i"
+	@echo "... impl/scheduler/reram_scheduler.s"
 .PHONY : help
 
 

@@ -196,7 +196,7 @@ class System:
 
         assert self.model_set, "Need to set_model"
         self.model.build(batch_size, lin, lout, self.hetero_name
-                         in [DeviceType.CPU, DeviceType.PIM])
+                         in [DeviceType.CPU, DeviceType.PIM, DeviceType.DIGPIM])
         
         
         
@@ -263,6 +263,7 @@ class System:
                     if layer.type in [
                             LayerType.MATMUL, LayerType.SOFTMAX, LayerType.X2G
                     ]:
+                        # print("Layer: {}, numOp: {}".format(layer.name, layer.numOp))
                         exec_time, energy = self.devices[
                             'Acc'].get_time_and_energy(layer)
                     else:
@@ -429,7 +430,7 @@ class System:
 
         ## Concat tag
         cap = self.devices['GPU'].aggregate_memory_capacity
-        if self.hetero_name in [DeviceType.CPU, DeviceType.PIM]:
+        if self.hetero_name in [DeviceType.CPU, DeviceType.PIM, DeviceType.DIGPIM]:
             cap += self.devices['Acc'].aggregate_memory_capacity
         cap = int(cap / (1024 * 1024 * 1024))
         bw_scale = self.devices['Acc'].peak_memory_bandwidth / self.devices[

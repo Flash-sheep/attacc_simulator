@@ -97,8 +97,23 @@ src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_t
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.s"
 	cd /home/long/attacc_simulator/ramulator2/build/src/frontend && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/pim_loadstore_trace.cpp -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.s
 
+src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o: src/frontend/CMakeFiles/ramulator-frontend.dir/flags.make
+src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o: ../src/frontend/impl/memory_trace/reram_loadstore_trace.cpp
+src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o: src/frontend/CMakeFiles/ramulator-frontend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/long/attacc_simulator/ramulator2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o"
+	cd /home/long/attacc_simulator/ramulator2/build/src/frontend && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o -MF CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o.d -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o -c /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp
+
+src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.i"
+	cd /home/long/attacc_simulator/ramulator2/build/src/frontend && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp > CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.i
+
+src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.s"
+	cd /home/long/attacc_simulator/ramulator2/build/src/frontend && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/long/attacc_simulator/ramulator2/src/frontend/impl/memory_trace/reram_loadstore_trace.cpp -o CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.s
+
 ramulator-frontend: src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/loadstore_trace.cpp.o
 ramulator-frontend: src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/pim_loadstore_trace.cpp.o
+ramulator-frontend: src/frontend/CMakeFiles/ramulator-frontend.dir/impl/memory_trace/reram_loadstore_trace.cpp.o
 ramulator-frontend: src/frontend/CMakeFiles/ramulator-frontend.dir/build.make
 .PHONY : ramulator-frontend
 

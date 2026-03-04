@@ -112,6 +112,7 @@ def Attention(L, key_addr, val_addr, itr, valid_channel = n_channel):
 
       ## MVSB command (Move to Softmax buffer) 
       ## A output element is generated for every n_idx
+      #每个bg会生成一个元素，由于prefetch为32B，所以每16个元素发一次MVSB
       if n_idx % 16 == 15 or n_idx == math.ceil(L / n_pch / n_rank / n_bg) - 1:
         cmd_score_mvsb[itr].append([])
         for bg_idx in range(n_bg):   
