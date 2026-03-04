@@ -93,6 +93,8 @@ private:
     if (op == "MV_SINGLE" || op == "PIM_MV_SINGLE") return Request::Type::PIM_MV_SINGLE;
     if (op == "RD_SINGLE" || op == "PIM_RD_SINGLE") return Request::Type::PIM_RD_SINGLE;
     if (op == "RD_ALL" || op == "PIM_RD_ALL") return Request::Type::PIM_RD_ALL;
+    if (op == "PIM_WRITE_SINGLE" || op == "WRITE_SINGLE") return Request::Type::PIM_WRITE_SINGLE;
+    if (op == "PIM_WRITE_MUL" || op == "WRITE_MUL") return Request::Type::PIM_WRITE_MUL;
 
     throw ConfigurationError(
         "Trace {} invalid op '{}' at line {}.",

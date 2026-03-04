@@ -69,7 +69,7 @@ public:
 
     // MASK 特例：低 32 位是 mask_value，不参与层级切片
     // （mask_value 由 controller 从 req.addr 自行解析）
-    if (req.type_id == Request::Type::PIM_MASK) {
+    if (req.type_id == Request::Type::PIM_MASK||req.type_id == Request::Type::PIM_WRITE_MUL) {
       addr = (addr >> 32);
     }
 

@@ -89,6 +89,7 @@ class ReRAM : public IDRAM, public Implementation {
   // PIM / ReRAM-PIM commands
   "NOR", "SET",
   "MASK", "MUL_RD", "MV_SINGLE", "RD_SINGLE", "RD_ALL",
+  "WRITE_SINGLE", "WRITE_MUL",
 };
 
 
@@ -106,6 +107,8 @@ class ReRAM : public IDRAM, public Implementation {
         {"MV_SINGLE", "column"},
         {"RD_SINGLE", "column"},
         {"RD_ALL",    "column"},
+        {"WRITE_SINGLE", "column"},
+        {"WRITE_MUL",    "column"},
     }
 );
 
@@ -122,6 +125,8 @@ class ReRAM : public IDRAM, public Implementation {
     {"MV_SINGLE", {false, false, true,  false}},  // 片上搬运（概念）
     {"RD_SINGLE", {false, false, true,  false}},  // 单个 FP16 读（概念）
     {"RD_ALL",    {false, false, true,  false}},  // 块读（概念）
+    {"WRITE_SINGLE", {false, false, true, false}}, // 单个 FP16 写（概念）
+    {"WRITE_MUL",    {false, false, true, false}}, // 块写（概念）
     }
 );
 
@@ -133,6 +138,7 @@ class ReRAM : public IDRAM, public Implementation {
   "pim-nor", "pim-set",
   // Extended ReRAM-PIM requests
   "pim-mask", "mul-rd", "mv-single", "rd-single", "rd-all",
+  "pim-write-single", "pim-write-mul",
 };
 
 inline static const ImplLUT m_request_translations = LUT(
@@ -146,6 +152,8 @@ inline static const ImplLUT m_request_translations = LUT(
         {"mv-single", "MV_SINGLE"},
         {"rd-single", "RD_SINGLE"},
         {"rd-all",    "RD_ALL"},
+        {"pim-write-single", "WRITE_SINGLE"},
+        {"pim-write-mul",    "WRITE_MUL"},
     }
 );
 
@@ -413,6 +421,37 @@ inline static const ImplLUT m_request_translations = LUT(
 {.level = "array", .preceding = {"MUL_RD"},     .following = {"RD"},         .latency = V("nRC")},
 {.level = "array", .preceding = {"MV_SINGLE"},  .following = {"RD"},         .latency = V("nRC")},
 
+// ------------------------------
+// 把 WRITE_SINGLE / WRITE_MUL 纳入 array 级访问（nRC）约束
+// 目的：避免调度器把 array 内部访问重叠发射
+// ------------------------------
+{.level="array", .preceding={"RD"},        .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"RD"},        .following={"WRITE_MUL"},    .latency=V("nRC")},
+{.level="array", .preceding={"RD_SINGLE"}, .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"RD_SINGLE"}, .following={"WRITE_MUL"},    .latency=V("nRC")},
+{.level="array", .preceding={"RD_ALL"},    .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"RD_ALL"},    .following={"WRITE_MUL"},    .latency=V("nRC")},
+{.level="array", .preceding={"MUL_RD"},    .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"MUL_RD"},    .following={"WRITE_MUL"},    .latency=V("nRC")},
+{.level="array", .preceding={"MV_SINGLE"}, .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"MV_SINGLE"}, .following={"WRITE_MUL"},    .latency=V("nRC")},
+
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"RD"},        .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"RD"},        .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"RD_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"RD_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"RD_ALL"},    .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"RD_ALL"},    .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"MUL_RD"},    .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"MUL_RD"},    .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"MV_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"MV_SINGLE"}, .latency=V("nRC")},
+
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"WRITE_MUL"},    .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"WRITE_SINGLE"}, .latency=V("nRC")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"WRITE_MUL"},    .latency=V("nRC")},
+
         // 写类 = WR / NOR / SET：互相之间至少间隔 nWR（等价“写一次”的时间）
         {.level = "array", .preceding = {"WR"},  .following = {"WR"},  .latency = V("nWR")},
         {.level = "array", .preceding = {"WR"},  .following = {"NOR"}, .latency = V("nWR")},
@@ -432,6 +471,33 @@ inline static const ImplLUT m_request_translations = LUT(
 {.level = "array", .preceding = {"MASK"}, .following = {"NOR"}, .latency = V("nWR")},
 {.level = "array", .preceding = {"MASK"}, .following = {"SET"}, .latency = V("nWR")},
 {.level = "array", .preceding = {"MASK"}, .following = {"MASK"},.latency = V("nWR")},
+
+// ------------------------------
+// 把 WRITE_SINGLE / WRITE_MUL 纳入“写类”nWR 约束
+// 目的：写后恢复/编程时间建模（与你已有 WR/NOR/SET 一致）
+// ------------------------------
+{.level="array", .preceding={"WR"},           .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"WR"},           .following={"WRITE_MUL"},    .latency=V("nWR")},
+{.level="array", .preceding={"NOR"},          .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"NOR"},          .following={"WRITE_MUL"},    .latency=V("nWR")},
+{.level="array", .preceding={"SET"},          .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"SET"},          .following={"WRITE_MUL"},    .latency=V("nWR")},
+{.level="array", .preceding={"MASK"},         .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"MASK"},         .following={"WRITE_MUL"},    .latency=V("nWR")},
+
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"WR"},           .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"WR"},           .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"NOR"},          .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"NOR"},          .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"SET"},          .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"SET"},          .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"MASK"},         .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"MASK"},         .latency=V("nWR")},
+
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_SINGLE"}, .following={"WRITE_MUL"},    .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"WRITE_SINGLE"}, .latency=V("nWR")},
+{.level="array", .preceding={"WRITE_MUL"},    .following={"WRITE_MUL"},    .latency=V("nWR")},
     });
     #undef V
     }

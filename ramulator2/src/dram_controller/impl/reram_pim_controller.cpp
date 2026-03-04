@@ -115,6 +115,8 @@ private:
   int m_mv_single_hit_cycles    = 1;
   int m_mv_single_miss_cycles   = 0;   // miss 时额外 SA 读一次
   int m_rd_single_bus_cycles    = 0;   // RD_SINGLE 通过总线传一个 FP16 的额外占用（建议用 nBL 或 1）
+  int m_write_single_cycles = 1;
+  int m_write_mul_cycles_per_row = 1;
 
 public:
   void init() override {
@@ -243,6 +245,8 @@ public:
       case Request::Type::PIM_MASK:
       case Request::Type::PIM_MUL_RD:
       case Request::Type::PIM_MV_SINGLE:
+      case Request::Type::PIM_WRITE_SINGLE:
+      case Request::Type::PIM_WRITE_MUL:
         ok = ag.pim_buffer.enqueue(req);
         break;
 
@@ -377,6 +381,8 @@ private:
       case Request::Type::PIM_MV_SINGLE:
       case Request::Type::PIM_RD_SINGLE:
       case Request::Type::PIM_RD_ALL:
+      case Request::Type::PIM_WRITE_SINGLE:
+      case Request::Type::PIM_WRITE_MUL:
         return true;
       default:
         return false;
@@ -385,7 +391,7 @@ private:
 
   inline int get_bs_bit(const Request& req) const {
     // base_addr: MASK 需要去掉低 32 位 mask
-    uint64_t base = (req.type_id == Request::Type::PIM_MASK) ? (uint64_t(req.addr) >> 32) : uint64_t(req.addr);
+    uint64_t base = (req.type_id == Request::Type::PIM_MASK || req.type_id == Request::Type::PIM_WRITE_MUL) ? (uint64_t(req.addr) >> 32) : uint64_t(req.addr);
     return int((base >> (m_row_bits + m_col_bits)) & 0x1ULL);
   }
 
@@ -532,6 +538,59 @@ private:
         ag.pim_busy_until = std::max(ag.pim_busy_until, m_clk + (Clk_t)extra);
         break;
       }
+      case Request::Type::PIM_WRITE_SINGLE: {
+
+          ag.pim_busy_until =
+              std::max(ag.pim_busy_until,
+                      m_clk + (Clk_t)m_write_single_cycles);
+
+          if (ag.buf.valid &&
+              ag.buf.array_id == array_id &&
+              ag.buf.fp16_col == fp16_col) {
+
+              if (ag.buf.whole_array ||
+                  ag.buf.block_id == block_id) {
+                  ag.buf.valid = false;
+              }
+          }
+
+          break;
+      }
+      case Request::Type::PIM_WRITE_MUL: {
+
+    int rows = (bs == 0) ? 1024 : 32;
+    int selected_rows = 0;
+
+    if (rows == 32) {
+        selected_rows = selected_rows_in_block(block_id);
+    } else {
+        for (int b = 0; b < AGController::kBlocksPerArray; b++) {
+            selected_rows += selected_rows_in_block(b);
+        }
+    }
+
+    int extra_cycles =
+        std::max(1, m_write_mul_cycles_per_row) *
+        std::max(1, selected_rows);
+
+    ag.pim_busy_until =
+        std::max(ag.pim_busy_until,
+                 m_clk + (Clk_t)extra_cycles);
+
+    if (ag.buf.valid &&
+        ag.buf.array_id == array_id &&
+        ag.buf.fp16_col == fp16_col) {
+
+        if (bs == 0 ||
+            ag.buf.whole_array ||
+            ag.buf.block_id == block_id) {
+            ag.buf.valid = false;
+        }
+    }
+
+    break;
+}
+
       default:
         break;
     }

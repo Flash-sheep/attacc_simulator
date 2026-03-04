@@ -29,6 +29,8 @@ struct Request {
       PIM_MV_SINGLE = 18, // 片上搬运（概念
       PIM_RD_SINGLE = 19, // 单个 FP16 读（概念）
       PIM_RD_ALL = 20,    // 块读（概念）
+      PIM_WRITE_SINGLE = 21, // 单个 FP16 写（概念）
+      PIM_WRITE_MUL = 22, // 块写（概念）
 
       // PIM requests
       PIM_MAC_AB = 4,
