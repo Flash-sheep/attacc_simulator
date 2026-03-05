@@ -41,14 +41,15 @@ private:
     // bit=0 -> 选通；bit=1 -> 不选通
     std::vector<uint32_t> block_masks;
 
-    struct BufState {
-      bool  valid        = false;
-      int   array_id     = -1;
-      bool  whole_array  = false;  // BS=0 -> whole array; BS=1 -> one block
-      int   block_id     = -1;     // 仅在 whole_array=false 时有效
-      int   fp16_col     = -1;     // buffer 中缓存的是哪个 FP16 列（col/16）
-      Clk_t ready_at     = 0;
-    } buf;
+    // Buffer modeling is temporarily disabled.
+    // struct BufState {
+    //   bool  valid        = false;
+    //   int   array_id     = -1;
+    //   bool  whole_array  = false;  // BS=0 -> whole array; BS=1 -> one block
+    //   int   block_id     = -1;     // 仅在 whole_array=false 时有效
+    //   int   fp16_col     = -1;     // buffer 中缓存的是哪个 FP16 列（col/16）
+    //   Clk_t ready_at     = 0;
+    // } buf;
 
     inline void set_write_mode() {
       if (!is_write_mode) {
@@ -240,7 +241,8 @@ public:
       ag.num_arrays = num_arrays;
       ag.blocks_per_array = m_blocks_per_array;
       ag.block_masks.assign(num_arrays * m_blocks_per_array, 0u);
-      ag.buf = {};
+      // Buffer modeling is temporarily disabled.
+      // ag.buf = {};
       ag.pim_busy_until = 0;
       ag.pending_reads = 0;
     }
@@ -249,6 +251,11 @@ public:
   // ==================== 请求入口 ====================
 
   bool send(Request& req) override {
+    if (req.type_id == Request::Type::PIM_RD_ALL) {
+      // RD_ALL is temporarily disabled.
+      req.arrive = -1;
+      return false;
+    }
     req.final_command = translate_request_type_to_command(req.type_id);
     req.arrive        = m_clk;
 
@@ -281,11 +288,8 @@ public:
         break;
 
       case Request::Type::PIM_RD_SINGLE:
-      case Request::Type::PIM_RD_ALL:
-        // 这两类你也可以丢到 read_buffer；这里为了统一当作 PIM/片上路径
         ok = ag.pim_buffer.enqueue(req);
         break;
-
       default:
         ok = ag.priority_buffer.enqueue(req);
         break;
@@ -299,6 +303,11 @@ public:
   }
 
   bool priority_send(Request& req) override {
+    if (req.type_id == Request::Type::PIM_RD_ALL) {
+      // RD_ALL is temporarily disabled.
+      req.arrive = -1;
+      return false;
+    }
     req.final_command = translate_request_type_to_command(req.type_id);
     req.arrive        = m_clk;
 
@@ -372,8 +381,7 @@ public:
     if (req.command == req.final_command) {
       // --- callback reads ---
       if (req.type_id == Request::Type::Read ||
-          req.type_id == Request::Type::PIM_RD_SINGLE ||
-          req.type_id == Request::Type::PIM_RD_ALL) {
+          req.type_id == Request::Type::PIM_RD_SINGLE) {
         req.depart = m_clk + m_dram->m_read_latency;
         pending.push_back(req);
         ag.pending_reads++;
@@ -412,7 +420,6 @@ private:
       case Request::Type::PIM_MUL_RD:
       case Request::Type::PIM_MV_SINGLE:
       case Request::Type::PIM_RD_SINGLE:
-      case Request::Type::PIM_RD_ALL:
       case Request::Type::PIM_WRITE_SINGLE:
       case Request::Type::PIM_WRITE_MUL:
         return true;
@@ -512,6 +519,7 @@ private:
     const int block_id = get_block_id(req);
     const int bs       = get_bs_bit(req);
     const int fp16_col = get_fp16_col(req);
+    (void)fp16_col;
 
     // 选通行数（仅在 block 范围内）
     auto selected_rows_in_block = [&](int b) -> int {
@@ -531,7 +539,7 @@ private:
       }
 
       case Request::Type::PIM_MUL_RD: {
-        // 将指定范围的一列 FP16 读入 buffer
+        // 将指定范围的一列 FP16 从阵列读出（buffer 建模暂时关闭）
         // BS=1 -> 单个 block, BS=0 -> whole array
         int rows = (bs == 0) ? m_rows_per_array : m_rows_per_block;
 
@@ -548,36 +556,25 @@ private:
         const int extra_cycles = std::max(1, m_mul_rd_cycles_per_row) * std::max(1, selected_rows);
         ag.pim_busy_until = std::max(ag.pim_busy_until, m_clk + (Clk_t)extra_cycles);
 
-        ag.buf.valid       = true;
-        ag.buf.array_id    = array_id;
-        ag.buf.whole_array = (rows != m_rows_per_block);
-        ag.buf.block_id    = (rows == m_rows_per_block) ? block_id : -1;
-        ag.buf.fp16_col    = fp16_col;
-        ag.buf.ready_at    = ag.pim_busy_until;
+        // Buffer modeling is temporarily disabled.
+        // ag.buf.valid       = true;
+        // ag.buf.array_id    = array_id;
+        // ag.buf.whole_array = (rows != m_rows_per_block);
+        // ag.buf.block_id    = (rows == m_rows_per_block) ? block_id : -1;
+        // ag.buf.fp16_col    = fp16_col;
+        // ag.buf.ready_at    = ag.pim_busy_until;
         break;
       }
 
       case Request::Type::PIM_RD_ALL: {
-        if (ag.buf.valid) {
-          ag.pim_busy_until = std::max(
-              ag.pim_busy_until,
-              m_clk + (Clk_t)std::max(1, m_rd_all_bus_cycles));
-          ag.buf.valid = false;
-        }
+        // RD_ALL is temporarily disabled.
         break;
       }
 
       case Request::Type::PIM_MV_SINGLE: {
-        // hit：buffer 覆盖该 array/block 且列一致
-        bool hit = false;
-        if (ag.buf.valid && ag.buf.array_id == array_id && ag.buf.fp16_col == fp16_col) {
-          if (ag.buf.whole_array) {
-            hit = true;
-          } else {
-            hit = (ag.buf.block_id == block_id);
-          }
-        }
-        int extra = hit ? m_mv_single_hit_cycles : (m_mv_single_hit_cycles + m_mv_single_miss_cycles);
+        // Buffer-based hit/miss modeling is temporarily disabled.
+        // Use a fixed "no-buffer" cost path for now.
+        int extra = m_mv_single_hit_cycles + m_mv_single_miss_cycles;
         ag.pim_busy_until = std::max(ag.pim_busy_until, m_clk + (Clk_t)std::max(1, extra));
         break;
       }
@@ -602,15 +599,16 @@ private:
               std::max(ag.pim_busy_until,
                       m_clk + (Clk_t)m_write_single_cycles);
 
-          if (ag.buf.valid &&
-              ag.buf.array_id == array_id &&
-              ag.buf.fp16_col == fp16_col) {
-
-              if (ag.buf.whole_array ||
-                  ag.buf.block_id == block_id) {
-                  ag.buf.valid = false;
-              }
-          }
+          // Buffer invalidation is temporarily disabled.
+          // if (ag.buf.valid &&
+          //     ag.buf.array_id == array_id &&
+          //     ag.buf.fp16_col == fp16_col) {
+          //
+          //     if (ag.buf.whole_array ||
+          //         ag.buf.block_id == block_id) {
+          //         ag.buf.valid = false;
+          //     }
+          // }
 
           break;
       }
@@ -635,16 +633,17 @@ private:
         std::max(ag.pim_busy_until,
                  m_clk + (Clk_t)extra_cycles);
 
-    if (ag.buf.valid &&
-        ag.buf.array_id == array_id &&
-        ag.buf.fp16_col == fp16_col) {
-
-        if (bs == 0 ||
-            ag.buf.whole_array ||
-            ag.buf.block_id == block_id) {
-            ag.buf.valid = false;
-        }
-    }
+    // Buffer invalidation is temporarily disabled.
+    // if (ag.buf.valid &&
+    //     ag.buf.array_id == array_id &&
+    //     ag.buf.fp16_col == fp16_col) {
+    //
+    //     if (bs == 0 ||
+    //         ag.buf.whole_array ||
+    //         ag.buf.block_id == block_id) {
+    //         ag.buf.valid = false;
+    //     }
+    // }
 
     break;
 }
