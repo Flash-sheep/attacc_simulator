@@ -15,12 +15,13 @@ namespace fs = std::filesystem;
  * ReRAMTrace
  *
  * 每行两个字段：
- *   <OP> <ADDR>
+ *   <OP> <PAYLOAD>
  *
- * ADDR 为 bit 级地址（精确到 row/col 的 bit）。
- * 对 PIM_MASK：ADDR 的低 32 位为 mask_value，高位为 base_addr。
- * 对 PIM_WRITE_MUL：ADDR 的低 32 位为 write_value，高位为 base_addr。
- * 对 PIM_MUL_RD / PIM_RD_ALL / PIM_WRITE_MUL：ADDR 的 bit62 作为 BS（0=whole array, 1=single block）。
+ * PAYLOAD 默认按 56-bit 解释为 Addr24|Tail32：
+ *   Addr24: BS(1) + Channel(4) + BG(3) + Bank(3) + AG(2) + Array(6) + Block(5)
+ *   Tail32: 指令相关字段（input/row/word_col/write/mask 等）
+ *
+ * 兼容旧格式：若 PAYLOAD 仅有低 24bit，则视作只有 Addr24，Tail32=0。
  */
 class ReRAMTrace : public IFrontEnd, public Implementation {
   RAMULATOR_REGISTER_IMPLEMENTATION(
@@ -33,7 +34,7 @@ class ReRAMTrace : public IFrontEnd, public Implementation {
 private:
   struct Trace {
     int type;
-    Addr_t addr;
+    uint64_t raw_payload;
   };
   std::vector<Trace> m_trace;
 
@@ -71,7 +72,9 @@ public:
     bool req_full = false;
     while (!req_full && !is_finished()) {
       const Trace& t = m_trace[m_curr_trace_idx];
-      bool sent = m_memory_system->send({t.addr, t.type});
+      Request req(static_cast<Addr_t>(t.raw_payload), t.type);
+      decode_payload(req, t.raw_payload);
+      bool sent = m_memory_system->send(req);
       if (sent) {
         m_curr_trace_idx = (m_curr_trace_idx + 1) % m_trace_length;
         m_trace_count++;
@@ -88,6 +91,7 @@ private:
     if (op == "ST") return Request::Type::Write;
 
     if (op == "PIM_NOR" || op == "NOR") return Request::Type::PIM_NOR;
+    if (op == "PIM_NOT" || op == "NOT") return Request::Type::PIM_NOR;
     if (op == "PIM_SET" || op == "SET") return Request::Type::PIM_SET;
 
     if (op == "MASK" || op == "PIM_MASK") return Request::Type::PIM_MASK;
@@ -103,17 +107,58 @@ private:
         file, op, line_no);
   }
 
-  static Addr_t parse_addr(const std::string& s, const std::string& file, size_t line_no) {
+  static uint64_t parse_payload(const std::string& s, const std::string& file, size_t line_no) {
     try {
       if (s.rfind("0x", 0) == 0 || s.rfind("0X", 0) == 0) {
-        return static_cast<Addr_t>(std::stoull(s.substr(2), nullptr, 16));
+        return std::stoull(s.substr(2), nullptr, 16);
       }
-      return static_cast<Addr_t>(std::stoull(s, nullptr, 10));
+      return std::stoull(s, nullptr, 10);
     } catch (...) {
       throw ConfigurationError(
-          "Trace {} invalid address '{}' at line {}.",
+          "Trace {} invalid payload '{}' at line {}.",
           file, s, line_no);
     }
+  }
+
+  static void decode_addr24(Request& req, uint32_t addr24) {
+    req.isa_addr24  = addr24;
+    req.isa_bs      = (addr24 >> 23) & 0x1;
+    req.isa_channel = (addr24 >> 19) & 0xf;
+    req.isa_bg      = (addr24 >> 16) & 0x7;
+    req.isa_bank    = (addr24 >> 13) & 0x7;
+    req.isa_ag      = (addr24 >> 11) & 0x3;
+    req.isa_array   = (addr24 >> 5)  & 0x3f;
+    req.isa_block   = addr24 & 0x1f;
+  }
+
+  static void decode_tail32(Request& req, uint32_t tail32) {
+    req.isa_tail32 = tail32;
+    req.isa_input1 = static_cast<uint16_t>((tail32 >> 16) & 0xffffu);
+    req.isa_input2 = static_cast<uint16_t>(tail32 & 0xffffu);
+    req.isa_output1 = req.isa_input2;
+    req.isa_write16 = static_cast<uint16_t>(tail32 & 0xffffu);
+    req.isa_write32 = tail32;
+    req.isa_mask32  = tail32;
+    req.isa_row      = (tail32 >> 27) & 0x1f;
+    req.isa_word_col = (tail32 >> 16) & 0x7ff;
+  }
+
+  static void decode_payload(Request& req, uint64_t raw) {
+    req.isa_decoded = true;
+    req.isa_raw56   = raw & 0x00ffffffffffffffULL;
+
+    uint32_t addr24 = 0;
+    uint32_t tail32 = 0;
+    if ((raw >> 24) == 0) {
+      // Backward compatibility: payload is only addr24
+      addr24 = static_cast<uint32_t>(raw & 0x00ffffffu);
+    } else {
+      addr24 = static_cast<uint32_t>((raw >> 32) & 0x00ffffffu);
+      tail32 = static_cast<uint32_t>(raw & 0xffffffffu);
+    }
+
+    decode_addr24(req, addr24);
+    decode_tail32(req, tail32);
   }
 
   void init_trace(const std::string& file_path_str) {
@@ -142,12 +187,12 @@ private:
       }
 
       const std::string& op = tokens[0];
-      const std::string& addr_str = tokens[1];
+      const std::string& payload_str = tokens[1];
 
       int type = parse_op(op, file_path_str, line_no);
-      Addr_t addr = parse_addr(addr_str, file_path_str, line_no);
+      uint64_t raw_payload = parse_payload(payload_str, file_path_str, line_no);
 
-      m_trace.push_back({type, addr});
+      m_trace.push_back({type, raw_payload});
     }
 
     trace_file.close();

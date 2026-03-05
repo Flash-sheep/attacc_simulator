@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <vector>
 
 #include "base/base.h"
@@ -27,6 +28,14 @@ public:
 
   int m_num_levels = -1;
   std::vector<int> m_addr_bits;
+  int m_ch_level = -1;
+  int m_tile_level = -1;
+  int m_pe_level = -1;
+  int m_ag_level = -1;
+  int m_array_level = -1;
+  int m_row_level = -1;
+  int m_col_level = -1;
+  int m_rows_per_block = 32;
 
 protected:
   void setup(IFrontEnd*, IMemorySystem* memory_system) {
@@ -40,9 +49,13 @@ protected:
       m_addr_bits[level] = calc_log2(count[level]);
     }
 
-    // sanity: row/column 必须存在
-    (void)m_dram->m_levels("row");
-    (void)m_dram->m_levels("column");
+    m_ch_level    = m_dram->m_levels("channel");
+    m_tile_level  = m_dram->m_levels("tile");
+    m_pe_level    = m_dram->m_levels("pe");
+    m_ag_level    = m_dram->m_levels("ag");
+    m_array_level = m_dram->m_levels("array");
+    m_row_level   = m_dram->m_levels("row");
+    m_col_level   = m_dram->m_levels("column");
   }
 };
 
@@ -66,6 +79,55 @@ public:
 
   void apply(Request& req) override {
     req.addr_vec.resize(m_num_levels, -1);
+    if (req.isa_decoded) {
+      auto clamp_mod = [](int val, int dim) -> int {
+        if (dim <= 0) return 0;
+        int x = val % dim;
+        return (x < 0) ? (x + dim) : x;
+      };
+      const int rows = m_dram->m_organization.count[m_row_level];
+      const int cols = m_dram->m_organization.count[m_col_level];
+
+      req.addr_vec[m_ch_level]    = clamp_mod(req.isa_channel, m_dram->m_organization.count[m_ch_level]);
+      req.addr_vec[m_tile_level]  = clamp_mod(req.isa_bg,      m_dram->m_organization.count[m_tile_level]);
+      req.addr_vec[m_pe_level]    = clamp_mod(req.isa_bank,    m_dram->m_organization.count[m_pe_level]);
+      req.addr_vec[m_ag_level]    = clamp_mod(req.isa_ag,      m_dram->m_organization.count[m_ag_level]);
+      req.addr_vec[m_array_level] = clamp_mod(req.isa_array,   m_dram->m_organization.count[m_array_level]);
+
+      int row = 0;
+      if (req.isa_bs == 1) {
+        int row_in_block = 0;
+        if (req.type_id == Request::Type::PIM_WRITE_SINGLE ||
+            req.type_id == Request::Type::PIM_MV_SINGLE ||
+            req.type_id == Request::Type::PIM_RD_SINGLE) {
+          row_in_block = std::max(0, req.isa_row);
+        }
+        row = req.isa_block * m_rows_per_block + row_in_block;
+      }
+      req.addr_vec[m_row_level] = clamp_mod(row, rows);
+
+      int col = 0;
+      switch (req.type_id) {
+        case Request::Type::PIM_SET:
+        case Request::Type::PIM_NOR:
+          col = req.isa_input1;
+          break;
+        case Request::Type::PIM_WRITE_SINGLE:
+        case Request::Type::PIM_MV_SINGLE:
+        case Request::Type::PIM_RD_SINGLE:
+        case Request::Type::PIM_MUL_RD:
+          col = std::max(0, req.isa_word_col) * 16;
+          break;
+        case Request::Type::PIM_WRITE_MUL:
+          col = req.isa_block * 32;
+          break;
+        default:
+          col = 0;
+          break;
+      }
+      req.addr_vec[m_col_level] = clamp_mod(col, cols);
+      return;
+    }
 
     // bit-address: 不再做 tx/byte 对齐
     uint64_t addr = static_cast<uint64_t>(req.addr);

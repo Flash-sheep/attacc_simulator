@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <string>
+#include <cstdint>
 
 #include "base/base.h"
 
@@ -54,6 +55,32 @@ struct Request {
 
   Clk_t arrive = -1;   // Clock cycle when the request arrive at the memory controller
   Clk_t depart = -1;   // Clock cycle when the request depart the memory controller
+
+  // Decoded instruction payload for ReRAM ISA:
+  // opcode + Addr(24b) + Tail(32b)
+  bool     isa_decoded = false;
+  uint32_t isa_addr24  = 0;
+  uint32_t isa_tail32  = 0;
+  uint64_t isa_raw56   = 0;
+
+  // Addr(24b): BS(1) + Channel(4) + BG(3) + Bank(3) + AG(2) + Array(6) + Block(5)
+  int isa_bs      = 0;
+  int isa_channel = 0;
+  int isa_bg      = 0;
+  int isa_bank    = 0;
+  int isa_ag      = 0;
+  int isa_array   = 0;
+  int isa_block   = 0;
+
+  // Tail(32b) decoded fields
+  int      isa_row      = -1;      // 5-bit local row for *_SINGLE
+  int      isa_word_col = -1;      // 11-bit FP16 column selector
+  uint16_t isa_input1   = 0;
+  uint16_t isa_input2   = 0;
+  uint16_t isa_output1  = 0;
+  uint16_t isa_write16  = 0;
+  uint32_t isa_write32  = 0;
+  uint32_t isa_mask32   = 0;
 
   std::function<void(Request&)> callback;
 

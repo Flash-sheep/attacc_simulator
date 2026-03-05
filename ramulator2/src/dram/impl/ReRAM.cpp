@@ -389,6 +389,13 @@ inline static const ImplLUT m_request_translations = LUT(
 {.level = "channel", .preceding = {"RD_SINGLE"}, .following = {"RD_SINGLE"}, .latency = V("nBL")},
 {.level = "channel", .preceding = {"RD"},        .following = {"RD_SINGLE"}, .latency = V("nBL")},
 {.level = "channel", .preceding = {"RD_SINGLE"}, .following = {"RD"},        .latency = V("nBL")},
+{.level = "channel", .preceding = {"MUL_RD"},    .following = {"MUL_RD"},    .latency = V("nBL")},
+{.level = "channel", .preceding = {"RD"},        .following = {"MUL_RD"},    .latency = V("nBL")},
+{.level = "channel", .preceding = {"MUL_RD"},    .following = {"RD"},        .latency = V("nBL")},
+{.level = "channel", .preceding = {"RD_SINGLE"}, .following = {"MUL_RD"},    .latency = V("nBL")},
+{.level = "channel", .preceding = {"MUL_RD"},    .following = {"RD_SINGLE"}, .latency = V("nBL")},
+{.level = "channel", .preceding = {"MUL_RD"},    .following = {"WR"},        .latency = V("nRTW")},
+{.level = "channel", .preceding = {"WR"},        .following = {"MUL_RD"},    .latency = V("nWTRS")},
 
 // RD_ALL：模型上按 64B 传输估算总线占用（_nBL_ALL）
 {.level = "channel", .preceding = {"RD_ALL"},    .following = {"RD_ALL"},    .latency = _nBL_ALL},

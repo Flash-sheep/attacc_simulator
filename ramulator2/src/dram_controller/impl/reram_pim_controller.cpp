@@ -38,7 +38,7 @@ private:
     int blocks_per_array = 0;
 
     // block mask：每个 array 的每个 block 一个 uint32
-    // bit=0 -> 选通；bit=1 -> 不选通
+    // bit=1 -> 选通；bit=0 -> 不选通
     std::vector<uint32_t> block_masks;
 
     // Buffer modeling is temporarily disabled.
@@ -118,12 +118,12 @@ private:
   int m_mv_single_hit_cycles    = 1;
   int m_mv_single_miss_cycles   = 0;   // miss 时额外 SA 读一次
   int m_rd_single_bus_cycles    = 0;   // RD_SINGLE 通过总线传一个 FP16 的额外占用（建议用 nBL 或 1）
+  int m_mul_rd_bus_cycles       = 0;   // MUL_RD 直接回主存时的总线占用
   int m_rd_all_bus_cycles       = 0;
   int m_write_single_cycles = 1;
   int m_write_mul_cycles_per_row = 1;
   float m_wr_low_watermark = 0.2f;
   float m_wr_high_watermark = 0.8f;
-  static constexpr int kBSBitPos = 62;
 
 public:
   void init() override {
@@ -154,6 +154,10 @@ public:
 
     m_rd_single_bus_cycles = param<int>("rd_single_bus_cycles")
         .desc("Extra cycles for RD_SINGLE bus transfer of one FP16.")
+        .default_val(0);
+
+    m_mul_rd_bus_cycles = param<int>("mul_rd_bus_cycles")
+        .desc("Extra cycles for MUL_RD bus transfer to memory. If 0, defaults to nBL.")
         .default_val(0);
 
     m_rd_all_bus_cycles = param<int>("rd_all_bus_cycles")
@@ -220,6 +224,9 @@ public:
       // 默认把 RD_SINGLE 的 bus 占用当 1
       m_rd_single_bus_cycles = 1;
     }
+    if (m_mul_rd_bus_cycles == 0) {
+      m_mul_rd_bus_cycles = std::max(1, m_dram->m_timing_vals("nBL"));
+    }
     if (m_rd_all_bus_cycles == 0) {
       m_rd_all_bus_cycles = m_rd_single_bus_cycles;
     }
@@ -240,7 +247,9 @@ public:
 
       ag.num_arrays = num_arrays;
       ag.blocks_per_array = m_blocks_per_array;
-      ag.block_masks.assign(num_arrays * m_blocks_per_array, 0u);
+      const uint32_t default_mask =
+          (m_rows_per_block == 32) ? 0xffffffffu : ((1u << m_rows_per_block) - 1u);
+      ag.block_masks.assign(num_arrays * m_blocks_per_array, default_mask);
       // Buffer modeling is temporarily disabled.
       // ag.buf = {};
       ag.pim_busy_until = 0;
@@ -381,6 +390,7 @@ public:
     if (req.command == req.final_command) {
       // --- callback reads ---
       if (req.type_id == Request::Type::Read ||
+          req.type_id == Request::Type::PIM_MUL_RD ||
           req.type_id == Request::Type::PIM_RD_SINGLE) {
         req.depart = m_clk + m_dram->m_read_latency;
         pending.push_back(req);
@@ -447,15 +457,18 @@ private:
   }
 
   inline int get_bs_bit(const Request& req) const {
-    return int((uint64_t(req.addr) >> kBSBitPos) & 0x1ULL);
+    if (req.isa_decoded) return req.isa_bs;
+    return 1;
   }
 
   inline int get_block_id(const Request& req) const {
+    if (req.isa_decoded) return req.isa_block;
     int row = static_cast<int>(req.addr_vec[m_row_addr_idx]);
     return row / m_rows_per_block;
   }
 
   inline int get_fp16_col(const Request& req) const {
+    if (req.isa_decoded && req.isa_word_col >= 0) return req.isa_word_col;
     int col = static_cast<int>(req.addr_vec[m_col_addr_idx]);
     return (col >> 4); // bit col -> fp16 index
   }
@@ -525,8 +538,7 @@ private:
     auto selected_rows_in_block = [&](int b) -> int {
       uint32_t mask = ag.mask_ref(array_id, b);
       const uint32_t active_mask = (m_rows_per_block == 32) ? 0xffffffffu : ((1u << m_rows_per_block) - 1u);
-      int not_sel = __builtin_popcount(mask & active_mask);
-      return m_rows_per_block - not_sel;
+      return __builtin_popcount(mask & active_mask);
     };
 
     switch (req.type_id) {
@@ -539,7 +551,7 @@ private:
       }
 
       case Request::Type::PIM_MUL_RD: {
-        // 将指定范围的一列 FP16 从阵列读出（buffer 建模暂时关闭）
+        // 将指定范围的一列 FP16 从阵列读出并直接回主存（占用总线）
         // BS=1 -> 单个 block, BS=0 -> whole array
         int rows = (bs == 0) ? m_rows_per_array : m_rows_per_block;
 
@@ -553,7 +565,9 @@ private:
           }
         }
 
-        const int extra_cycles = std::max(1, m_mul_rd_cycles_per_row) * std::max(1, selected_rows);
+        const int array_cycles = std::max(1, m_mul_rd_cycles_per_row) * std::max(1, selected_rows);
+        const int bus_cycles   = std::max(1, m_mul_rd_bus_cycles);
+        const int extra_cycles = array_cycles + bus_cycles;
         ag.pim_busy_until = std::max(ag.pim_busy_until, m_clk + (Clk_t)extra_cycles);
 
         // Buffer modeling is temporarily disabled.
