@@ -15,6 +15,7 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DRAMULATOR_DEBUG")
 # set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+option(RAMULATOR_ENABLE_PIE "Build ramulator2 executable as a PIE for relative addressing." ON)
 ###############################
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
@@ -83,6 +84,13 @@ target_link_libraries(
   PRIVATE ramulator
   PRIVATE argparse
 )
+
+if(RAMULATOR_ENABLE_PIE)
+  set_target_properties(ramulator-exe PROPERTIES POSITION_INDEPENDENT_CODE ON)
+  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_link_options(ramulator-exe PRIVATE -pie)
+  endif()
+endif()
 
 set_target_properties(
   ramulator-exe
