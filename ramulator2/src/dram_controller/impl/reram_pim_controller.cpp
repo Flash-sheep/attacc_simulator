@@ -189,7 +189,7 @@ public:
     }
   }
 
-  void setup(IFrontEnd*, IMemorySystem* memory_system) override {
+  void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
     m_dram = memory_system->get_ifce<IDRAM>();
 
     m_ag_addr_idx    = m_dram->m_levels("ag");
@@ -254,6 +254,20 @@ public:
       // ag.buf = {};
       ag.pim_busy_until = 0;
       ag.pending_reads = 0;
+    }
+
+    // ReRAM-specific children depend on m_dram being ready. Wire them explicitly
+    // here instead of relying on the global recursive setup order.
+    if (m_scheduler != nullptr && m_scheduler->m_impl != nullptr) {
+      m_scheduler->m_impl->setup(frontend, memory_system);
+    }
+    if (m_refresh != nullptr && m_refresh->m_impl != nullptr) {
+      m_refresh->m_impl->setup(frontend, memory_system);
+    }
+    for (auto* plugin : m_plugins) {
+      if (plugin != nullptr && plugin->m_impl != nullptr) {
+        plugin->m_impl->setup(frontend, memory_system);
+      }
     }
   }
 

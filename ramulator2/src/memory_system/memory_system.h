@@ -31,6 +31,7 @@ class IMemorySystem : public TopLevel<IMemorySystem> {
     };
 
     virtual void finalize() { 
+      m_impl->finalize();
       for (auto component : m_components) {
         component->finalize();
       }

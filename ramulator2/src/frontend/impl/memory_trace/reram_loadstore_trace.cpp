@@ -1,6 +1,7 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include "frontend/frontend.h"
 #include "base/exception.h"
@@ -177,7 +178,11 @@ private:
     while (std::getline(trace_file, line)) {
       line_no++;
       std::vector<std::string> tokens;
-      tokenize(tokens, line, " \t");
+      // wyz 修改 读取trace逻辑
+      std::istringstream iss(line);
+      for (std::string token; iss >> token; ) {
+        tokens.push_back(std::move(token));
+      }
 
       if (tokens.empty()) continue;
       if (tokens.size() != 2) {
