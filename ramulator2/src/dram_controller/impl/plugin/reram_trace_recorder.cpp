@@ -8,6 +8,7 @@
 #include "dram_controller/controller.h"
 #include "dram_controller/plugin.h"
 #include "dram/dram.h"
+#include "memory_system/memory_system.h"
 
 namespace Ramulator {
 
@@ -20,6 +21,7 @@ class ReRAMTraceRecorder : public IControllerPlugin, public Implementation {
 
  private:
   IDRAM*   m_dram   = nullptr;
+  IMemorySystem* m_memory_system = nullptr;
   Logger_t m_tracer;
 
   std::filesystem::path m_trace_path;
@@ -42,9 +44,10 @@ class ReRAMTraceRecorder : public IControllerPlugin, public Implementation {
   }
 
   void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
+    m_memory_system = memory_system;
     // 拿到所属的 controller 和 dram 句柄
     m_ctrl = cast_parent<IDRAMController>();
-    m_dram = m_ctrl->m_dram;
+    m_dram = memory_system->get_ifce<IDRAM>();
 
     // 每个 channel 单独一个文件，例如: traces/reram_trace.ch0
     auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
@@ -65,6 +68,13 @@ class ReRAMTraceRecorder : public IControllerPlugin, public Implementation {
     if (!request_found) {
       // 本周期没发命令就啥也不记
       return;
+    }
+
+    if (m_dram == nullptr && m_memory_system != nullptr) {
+      m_dram = m_memory_system->get_ifce<IDRAM>();
+    }
+    if (m_dram == nullptr) {
+      throw std::runtime_error("ReRAMTraceRecorder: DRAM interface is not initialized.");
     }
 
     auto& req = *req_it;

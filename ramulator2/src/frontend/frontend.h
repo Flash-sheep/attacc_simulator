@@ -32,6 +32,7 @@ class IFrontEnd : public Clocked<IFrontEnd>, public TopLevel<IFrontEnd> {
     virtual bool is_finished() = 0;
 
     virtual void finalize() { 
+      m_impl->finalize();
       for (auto component : m_components) {
         component->finalize();
       }

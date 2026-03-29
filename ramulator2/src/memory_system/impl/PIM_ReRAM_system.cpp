@@ -32,6 +32,12 @@ public:
   int s_num_mv_single_requests = 0;
   int s_num_rd_single_requests = 0;
   int s_num_rd_all_requests    = 0;
+  int s_num_total_requests     = 0;
+  double s_total_latency_ns    = 0.0;
+  double s_total_latency_us    = 0.0;
+  double s_total_latency_ms    = 0.0;
+  double s_avg_cycles_per_request = 0.0;
+  double s_avg_latency_ns_per_request = 0.0;
 
 
 public:
@@ -66,6 +72,12 @@ public:
     register_stat(s_num_rd_single_requests).name("reram_num_rd_single_requests");
     register_stat(s_num_rd_all_requests).name("reram_num_rd_all_requests");
     register_stat(s_num_other_requests).name("reram_num_other_requests");
+    register_stat(s_num_total_requests).name("reram_num_total_requests");
+    register_stat(s_total_latency_ns).name("reram_total_latency_ns");
+    register_stat(s_total_latency_us).name("reram_total_latency_us");
+    register_stat(s_total_latency_ms).name("reram_total_latency_ms");
+    register_stat(s_avg_cycles_per_request).name("reram_avg_cycles_per_request");
+    register_stat(s_avg_latency_ns_per_request).name("reram_avg_latency_ns_per_request");
   };
 
   void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
@@ -87,6 +99,7 @@ public:
 
     // 3. 统计请求类型
     if (is_success) {
+      s_num_total_requests++;
       switch (req.type_id) {
         case Request::Type::Read: {
           s_num_read_requests++;
@@ -150,6 +163,31 @@ public:
     // ReRAM::set_timing_vals 已经把 "tCK_ps" 写进 m_timing_vals 里
     return m_dram->m_timing_vals("tCK_ps") / 1000.0f;  // 转成 ns
   };
+
+  void finalize() override {
+    const double tck_ns = static_cast<double>(get_tCK());
+    s_total_latency_ns = static_cast<double>(m_clk) * tck_ns;
+    s_total_latency_us = s_total_latency_ns / 1000.0;
+    s_total_latency_ms = s_total_latency_us / 1000.0;
+
+    if (s_num_total_requests > 0) {
+      s_avg_cycles_per_request = static_cast<double>(m_clk) / static_cast<double>(s_num_total_requests);
+      s_avg_latency_ns_per_request = s_total_latency_ns / static_cast<double>(s_num_total_requests);
+    } else {
+      s_avg_cycles_per_request = 0.0;
+      s_avg_latency_ns_per_request = 0.0;
+    }
+
+    for (auto component : m_components) {
+      component->finalize();
+    }
+
+    YAML::Emitter emitter;
+    emitter << YAML::BeginMap;
+    m_impl->print_stats(emitter);
+    emitter << YAML::EndMap;
+    std::cout << emitter.c_str() << std::endl;
+  }
 
   bool is_pending() override {
     bool pending_any = false;

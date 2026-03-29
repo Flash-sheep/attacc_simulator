@@ -3,6 +3,7 @@
 #include "base/base.h"
 #include "dram_controller/controller.h"
 #include "dram_controller/scheduler.h"
+#include "memory_system/memory_system.h"
 
 namespace Ramulator {
 
@@ -26,13 +27,32 @@ class ReRAMScheduler : public IScheduler, public Implementation {
 
 private:
   IDRAM* m_dram = nullptr;
+  IMemorySystem* m_memory_system = nullptr;
+
+  void ensure_dram() {
+    if (m_dram == nullptr) {
+      if (m_memory_system != nullptr) {
+        m_dram = m_memory_system->get_ifce<IDRAM>();
+      }
+      if (m_dram == nullptr) {
+        auto* ctrl = cast_parent<IDRAMController>();
+        if (ctrl != nullptr) {
+          m_dram = ctrl->m_dram;
+        }
+      }
+    }
+    if (m_dram == nullptr) {
+      throw std::runtime_error("ReRAMScheduler: DRAM interface is not initialized.");
+    }
+  }
 
 public:
   void init() override { }
 
   void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
+    m_memory_system = memory_system;
     // 从父对象（Controller）拿到 DRAM 设备指针
-    m_dram = cast_parent<IDRAMController>()->m_dram;
+    m_dram = memory_system->get_ifce<IDRAM>();
   }
 
   /**
@@ -40,6 +60,7 @@ public:
    */
   ReqBuffer::iterator compare(ReqBuffer::iterator req1,
                               ReqBuffer::iterator req2) override {
+    ensure_dram();
     bool ready1 = m_dram->check_ready(req1->command, req1->addr_vec);
     bool ready2 = m_dram->check_ready(req2->command, req2->addr_vec);
 
@@ -63,6 +84,7 @@ public:
    *       即把它们的 command 更新成当前应当执行的“下一条子命令”。
    */
   ReqBuffer::iterator get_best_request(ReqBuffer& buffer) override {
+    ensure_dram();
     if (buffer.size() == 0) {
       return buffer.end();
     }
